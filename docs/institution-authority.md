@@ -2,7 +2,7 @@
 
 The configuration owner stores native institution/issuer identities, tenant/status eligibility generations, governed proposals, and immutable grant facts with current controls. Native identity allocation works for non-bank institutions. A Bank row, customer LegalEntity, or display name does not confer issuer authority or a regulatory license.
 
-Use the [generated API specification](../core-common-config-mgmt-sdk/src/main/resources/openapi.yml) for exact routes, operation IDs, closed request fields, and receipt envelopes. The SDK is generated from the actual producer; do not replace its specification or client with handwritten equivalents.
+Use the [generated API specification](../core-common-config-mgmt-sdk/src/main/resources/openapi.yml) for exact routes, operation IDs, closed request fields, and receipt envelopes. The SDK is generated from the actual producer; do not replace its specification or client with handwritten equivalents. The packaged `api-spec/openapi.yml` resource is derived from canonical `openapi.yml` during `process-resources`; it is not maintained as a second source specification.
 
 ## Admission and control
 
