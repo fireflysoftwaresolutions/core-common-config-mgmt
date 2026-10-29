@@ -37,6 +37,8 @@ The Firefly Configuration Management Service is the **central configuration hub*
 
 For native institution grants, governed tenant/status eligibility, current observations, and deployment prerequisites, see [Institution authority](docs/institution-authority.md).
 
+For configuration-owned document issuer publication, finite current observations, original-action recovery, and optional deployment, see [Governed document issuers](docs/document-issuers.md).
+
 ## Quick Start
 
 ### Prerequisites

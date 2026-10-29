@@ -2799,6 +2799,366 @@ paths:
               schema:
                 $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
       x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/source-observations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: observeDocumentIssuerSource
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerSourceRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerSourceObservation"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/revocations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: revokeDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/revocation-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerRevocation
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/publications:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: publishDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/publication-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerPublication
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/preparations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: prepareDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPrepare"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/preparation-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerPreparation
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPrepare"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/current-observations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: observeCurrentDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPublicationReference"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerObservation"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
   /api/v1/tenants/filter:
     post:
       tags:
@@ -5559,6 +5919,11 @@ paths:
                   $ref: "#/components/schemas/ApiProcessMappingDTO"
 components:
   schemas:
+    DocumentIssuerFailure:
+      type: object
+      properties:
+        code:
+          type: string
     WebhookConfigDTO:
       required:
       - webhookName
@@ -8817,6 +9182,225 @@ components:
           items:
             type: string
       additionalProperties: false
+    DocumentIssuerSourceRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        actionId:
+          type: string
+        brandingId:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
+    DocumentIssuerUse:
+      type: object
+      properties:
+        purpose:
+          type: string
+          enum:
+          - DEPOSIT_ACCOUNT_ENROLLMENT
+        documentType:
+          type: string
+        locale:
+          type: string
+    DocumentIssuerSourceObservation:
+      type: object
+      properties:
+        source:
+          $ref: "#/components/schemas/DocumentIssuerSourceSnapshot"
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        nativeUntilEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerSourceSnapshot:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        tenantVersion:
+          type: integer
+          format: int64
+        brandingId:
+          type: string
+        brandingVersion:
+          type: integer
+          format: int64
+        sourceGeneration:
+          type: integer
+          format: int64
+        tenantCode:
+          type: string
+        tenantName:
+          type: string
+        tenantActive:
+          type: boolean
+        brandingActive:
+          type: boolean
+        logoUrl:
+          type: string
+        primaryColor:
+          type: string
+        footerText:
+          type: string
+    DocumentIssuerDecision:
+      type: object
+      properties:
+        actionId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        expectedGeneration:
+          type: integer
+          format: int64
+        reason:
+          type: string
+    DocumentIssuerReceipt:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        generation:
+          type: integer
+          format: int64
+        actionId:
+          type: string
+        operation:
+          type: string
+          enum:
+          - PREPARE
+          - PUBLISH
+          - REVOKE
+          - CURRENT
+          - SOURCE
+          - HISTORY
+          - RECOVER
+        state:
+          type: string
+          enum:
+          - PREPARED
+          - PUBLISHED
+          - REVOKED
+        definitionDigest:
+          type: string
+        intentDigest:
+          type: string
+        recordedAtEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerDefinition:
+      type: object
+      properties:
+        issuerId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        issuerCode:
+          type: string
+        displayName:
+          type: string
+        contactEmail:
+          type: string
+        uses:
+          type: array
+          items:
+            $ref: "#/components/schemas/DocumentIssuerUse"
+        source:
+          $ref: "#/components/schemas/DocumentIssuerSourceSnapshot"
+        effectiveFromEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerPrepare:
+      type: object
+      properties:
+        actionId:
+          type: string
+        publicationId:
+          type: string
+        expectedGeneration:
+          type: integer
+          format: int64
+        definition:
+          $ref: "#/components/schemas/DocumentIssuerDefinition"
+    DocumentIssuerPublicationReference:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
+    DocumentIssuerObservation:
+      type: object
+      properties:
+        reference:
+          $ref: "#/components/schemas/DocumentIssuerReference"
+        definition:
+          $ref: "#/components/schemas/DocumentIssuerDefinition"
+        generation:
+          type: integer
+          format: int64
+        sourceGeneration:
+          type: integer
+          format: int64
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        nativeUntilEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerReference:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
     PaginationResponseTenantDTO:
       type: object
       properties:
@@ -9567,3 +10151,8 @@ components:
           format: int64
         denialReason:
           type: string
+  securitySchemes:
+    documentIssuerBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
