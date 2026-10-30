@@ -40,10 +40,12 @@ class TenantResourceBindingCurrentBudgetTest {
         StepVerifier.withVirtualTime(()->filter.filter(exchange,e->Mono.<Void>never().doOnCancel(cancelled::incrementAndGet))).thenAwait(Duration.ofSeconds(5)).verifyComplete();
         assertEquals(1,cancelled.get());assertEquals(HttpStatus.SERVICE_UNAVAILABLE,exchange.getResponse().getStatusCode());assertEquals("no-store",exchange.getResponse().getHeaders().getCacheControl());
     }
-    @Test void expiryBeforeCommitCannotCommitSuccess(){
+    @Test void expiryBeforeCommitCannotCommitSuccess() throws Exception{
         var time=new Time();var filter=new TenantResourceBindingCurrentBudgetFilter(time,time.nanos::get);var exchange=exchange();
         filter.filter(exchange,e->{e.getResponse().setStatusCode(HttpStatus.OK);time.advance(Duration.ofSeconds(5));return e.getResponse().setComplete();}).block();
         assertEquals(HttpStatus.SERVICE_UNAVAILABLE,exchange.getResponse().getStatusCode());
+        assertEquals("no-store",exchange.getResponse().getHeaders().getCacheControl());assertEquals(org.springframework.http.MediaType.APPLICATION_JSON,exchange.getResponse().getHeaders().getContentType());
+        var failure=new com.fasterxml.jackson.databind.ObjectMapper().readTree(exchange.getResponse().getBodyAsString().block());assertEquals(1,failure.size());assertEquals("TENANT_RESOURCE_BINDING_UNAVAILABLE",failure.path("code").asText());
     }
     @Test void wallClockRollbackRefusesWithoutWork(){
         var time=new Time();var filter=new TenantResourceBindingCurrentBudgetFilter(time,time.nanos::get);var exchange=exchange();var calls=new AtomicInteger();

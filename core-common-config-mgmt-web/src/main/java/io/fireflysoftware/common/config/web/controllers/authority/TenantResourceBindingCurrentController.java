@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.fireflyframework.web.idempotency.annotation.DisableIdempotency;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.*;
 import io.swagger.v3.oas.annotations.security.*;
 import java.util.Objects;
@@ -28,7 +29,12 @@ public final class TenantResourceBindingCurrentController {
     @DisableIdempotency
     @GetMapping(value=TenantResourceBindingCurrentBudgetFilter.PATH,produces=MediaType.APPLICATION_JSON_VALUE)
     @Operation(operationId="observeCurrentTenantResourceBinding")
-    @ApiResponses({@ApiResponse(responseCode="200",useReturnTypeSchema=true),@ApiResponse(responseCode="400",description="Unexpected request input"),@ApiResponse(responseCode="401",description="Bearer authentication required"),@ApiResponse(responseCode="403",description="Current permission unavailable"),@ApiResponse(responseCode="503",description="Protected result unavailable")})
+    @ApiResponses({
+        @ApiResponse(responseCode="200",useReturnTypeSchema=true),
+        @ApiResponse(responseCode="400",description="Unexpected request input",content=@Content(mediaType=MediaType.APPLICATION_JSON_VALUE,schema=@Schema(implementation=Failure.class))),
+        @ApiResponse(responseCode="401",description="Security authentication failure may have an empty body; post-authentication CURRENT failure returns code-only JSON.",content=@Content(mediaType=MediaType.APPLICATION_JSON_VALUE,schema=@Schema(implementation=Failure.class))),
+        @ApiResponse(responseCode="403",description="Security denial may have an empty body; CURRENT lookup denial returns code-only JSON.",content=@Content(mediaType=MediaType.APPLICATION_JSON_VALUE,schema=@Schema(implementation=Failure.class))),
+        @ApiResponse(responseCode="503",description="Protected result unavailable",content=@Content(mediaType=MediaType.APPLICATION_JSON_VALUE,schema=@Schema(implementation=Failure.class)))})
     public Mono<ResponseEntity<Current>> current(ServerWebExchange exchange){
         return Mono.defer(()->{
             var original=TenantResourceBindingCurrentBudgetFilter.requireBudget(exchange);original.remaining();

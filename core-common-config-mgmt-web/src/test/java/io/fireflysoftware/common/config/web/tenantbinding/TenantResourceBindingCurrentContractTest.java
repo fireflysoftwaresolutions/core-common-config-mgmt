@@ -23,6 +23,16 @@ class TenantResourceBindingCurrentContractTest {
         assertEquals("observeCurrentTenantResourceBinding",method.getAnnotation(io.swagger.v3.oas.annotations.Operation.class).operationId());
         assertEquals("tenantResourceBindingBearer",type.getAnnotation(io.swagger.v3.oas.annotations.security.SecurityRequirement.class).name());
         assertEquals("io.fireflysoftware.common.config.interfaces.authority.TenantResourceBindingContracts$Current",((java.lang.reflect.ParameterizedType)((java.lang.reflect.ParameterizedType)method.getGenericReturnType()).getActualTypeArguments()[0]).getActualTypeArguments()[0].getTypeName());
+        var responses=java.util.Arrays.stream(method.getAnnotation(io.swagger.v3.oas.annotations.responses.ApiResponses.class).value()).collect(java.util.stream.Collectors.toMap(io.swagger.v3.oas.annotations.responses.ApiResponse::responseCode,value->value));
+        assertTrue(responses.get("200").useReturnTypeSchema());
+        assertEquals("Security authentication failure may have an empty body; post-authentication CURRENT failure returns code-only JSON.",responses.get("401").description());
+        for(String status:new String[]{"400","401","403","503"}){
+            var error=responses.get(status);assertFalse(error.useReturnTypeSchema());assertEquals(1,error.content().length);assertEquals("application/json",error.content()[0].mediaType());assertEquals(io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController.Failure.class,error.content()[0].schema().implementation());
+        }
+        assertEquals("Security denial may have an empty body; CURRENT lookup denial returns code-only JSON.",responses.get("403").description());
+        var failure=ModelConverters.getInstance().resolveAsResolvedSchema(new AnnotatedType(io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController.Failure.class).resolveAsRef(true));
+        assertEquals("#/components/schemas/TenantResourceBindingCurrentFailure",failure.schema.get$ref());
+        assertEquals(java.util.Set.of("code"),failure.referencedSchemas.get("TenantResourceBindingCurrentFailure").getProperties().keySet());
     }
     @Test void observationComponentsKeepOriginalWireNamesAndTypes(){
         var components=Current.class.getRecordComponents();
