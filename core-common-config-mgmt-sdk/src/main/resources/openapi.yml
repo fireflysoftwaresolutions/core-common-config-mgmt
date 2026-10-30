@@ -5568,6 +5568,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
+  /api/v1/tenant-resource-bindings/current:
+    get:
+      tags:
+      - TenantResourceBindingCurrent
+      operationId: observeCurrentTenantResourceBinding
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrent"
+        "400":
+          description: Unexpected request input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "401":
+          description: Security authentication failure may have an empty body; post-authentication
+            CURRENT failure returns code-only JSON.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "403":
+          description: Security denial may have an empty body; CURRENT lookup denial
+            returns code-only JSON.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+      security:
+      - tenantResourceBindingBearer: []
+      x-disable-idempotency: true
   /api/v1/tenant-brandings/tenant/{tenantId}:
     get:
       tags:
@@ -10151,7 +10192,86 @@ components:
           format: int64
         denialReason:
           type: string
+    TenantResourceBindingCurrentFailure:
+      type: object
+      properties:
+        code:
+          type: string
+    TenantResourceBindingCurrent:
+      type: object
+      properties:
+        reference:
+          $ref: "#/components/schemas/TenantResourceBindingReference"
+        definition:
+          $ref: "#/components/schemas/TenantResourceBindingDefinition"
+        controlVersion:
+          type: integer
+          format: int64
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        validUntilEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingDefinition:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        namespace:
+          $ref: "#/components/schemas/TenantResourceBindingNamespace"
+        resourceTenant:
+          $ref: "#/components/schemas/TenantResourceBindingResourceTenant"
+        version:
+          type: integer
+          format: int64
+        eligibility:
+          $ref: "#/components/schemas/TenantResourceBindingEligibility"
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingEligibility:
+      type: object
+      properties:
+        tenantGeneration:
+          type: integer
+          format: int64
+        statusId:
+          type: string
+          format: uuid
+        statusGeneration:
+          type: integer
+          format: int64
+    TenantResourceBindingNamespace:
+      type: object
+      properties:
+        issuer:
+          type: string
+        platformTenant:
+          type: string
+    TenantResourceBindingReference:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+    TenantResourceBindingResourceTenant:
+      type: object
+      properties:
+        value:
+          type: string
+          format: uuid
   securitySchemes:
+    tenantResourceBindingBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
     documentIssuerBearer:
       type: http
       scheme: bearer
