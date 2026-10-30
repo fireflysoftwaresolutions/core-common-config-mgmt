@@ -1,4 +1,6 @@
-package io.fireflysoftware.common.config.core.authority;
+package io.fireflysoftware.common.config.web.tenantbinding;
+import io.fireflysoftware.common.config.core.authority.TenantResourceBindingService;
+import io.fireflysoftware.common.config.core.authority.TenantResourceBindingLookupAuthorization;
 import io.fireflysoftware.common.config.web.config.TenantResourceBindingConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
