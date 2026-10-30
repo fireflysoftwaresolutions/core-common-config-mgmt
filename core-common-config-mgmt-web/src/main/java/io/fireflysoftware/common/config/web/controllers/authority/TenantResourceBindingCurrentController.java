@@ -4,6 +4,7 @@ import io.fireflysoftware.common.config.interfaces.authority.TenantResourceBindi
 import io.fireflysoftware.common.config.web.tenantbinding.TenantResourceBindingCurrentIngress;
 import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter;
 import io.swagger.v3.oas.annotations.Operation;
+import org.fireflyframework.web.idempotency.annotation.DisableIdempotency;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.*;
@@ -24,6 +25,7 @@ import reactor.core.publisher.Mono;
 public final class TenantResourceBindingCurrentController {
     private final TenantResourceBindingCurrentIngress ingress;
     public TenantResourceBindingCurrentController(TenantResourceBindingCurrentIngress ingress){this.ingress=Objects.requireNonNull(ingress);}
+    @DisableIdempotency
     @GetMapping(value=TenantResourceBindingCurrentBudgetFilter.PATH,produces=MediaType.APPLICATION_JSON_VALUE)
     @Operation(operationId="observeCurrentTenantResourceBinding")
     @ApiResponses({@ApiResponse(responseCode="200",useReturnTypeSchema=true),@ApiResponse(responseCode="400",description="Unexpected request input"),@ApiResponse(responseCode="401",description="Bearer authentication required"),@ApiResponse(responseCode="403",description="Current permission unavailable"),@ApiResponse(responseCode="503",description="Protected result unavailable")})

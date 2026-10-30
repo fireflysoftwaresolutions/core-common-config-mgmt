@@ -34,6 +34,21 @@ class TenantResourceBindingCurrentHttpTest {
         client.get().uri(PATH).headers(h->{h.setBearerAuth("controlled-token");h.set("X-Tenant-Id","44444444-4444-4444-4444-444444444444");}).exchange().expectStatus().isOk().expectHeader().valueEquals("Cache-Control","no-store").expectBody(Current.class).value(value->{assertEquals(" tenant, Ω ",value.definition().namespace().platformTenant());assertEquals(UUID.fromString("22222222-2222-2222-2222-222222222222"),value.definition().resourceTenant().value());});
         assertEquals(1,calls.get());assertEquals(1,actual.get());
     }
+    @Test void repeatedCurrentKeyUsesFreshIngressAndNeverTouchesMutationCache(){
+        var reads=new AtomicInteger();var cacheCalls=new AtomicInteger();var budgets=Collections.newSetFromMap(new IdentityHashMap<R2dbcOperationBudget,Boolean>());
+        var cache=new org.fireflyframework.web.idempotency.cache.IdempotencyCache(){
+            public Mono<org.fireflyframework.web.idempotency.model.CachedResponse> get(String key){cacheCalls.incrementAndGet();return Mono.error(new AssertionError("GET cannot read mutation cache"));}
+            public Mono<Void> put(String key,org.fireflyframework.web.idempotency.model.CachedResponse value){cacheCalls.incrementAndGet();return Mono.error(new AssertionError("GET cannot write mutation cache"));}
+        };
+        var properties=new org.fireflyframework.web.idempotency.config.IdempotencyProperties();properties.setNamespace("controlled-current-owner");
+        var filter=new org.fireflyframework.web.idempotency.filter.IdempotencyWebFilter(properties,cache);
+        var client=client("tenant",budget->{budgets.add(budget);var current=TenantResourceBindingCurrentIngressTest.current(Clock.systemUTC());return Mono.just(new Current(current.reference(),current.definition(),reads.incrementAndGet(),current.observedAtEpochMillis(),current.validUntilEpochMillis()));},(p,a,r,c)->Mono.just(Decision.permit()),filter);
+        for(long expected=1;expected<=2;expected++){
+            long version=expected;
+            client.get().uri(PATH).headers(headers->{headers.setBearerAuth("controlled-token");headers.set("X-Idempotency-Key","same-current-key");}).exchange().expectStatus().isOk().expectHeader().valueEquals("Cache-Control","no-store").expectBody(Current.class).value(value->assertEquals(version,value.controlVersion()));
+        }
+        assertEquals(2,reads.get());assertEquals(2,budgets.size());assertEquals(0,cacheCalls.get());
+    }
     @Test void missingBearerNeverCallsCore(){var calls=new AtomicInteger();client("tenant",read(calls),(p,a,r,c)->Mono.just(Decision.permit())).get().uri(PATH).exchange().expectStatus().isUnauthorized();assertEquals(0,calls.get());}
     @Test void missingSignedTenantCannotUseForgedHeader(){var calls=new AtomicInteger();client(null,read(calls),(p,a,r,c)->Mono.just(Decision.permit())).get().uri(PATH).headers(h->{h.setBearerAuth("controlled-token");h.set("X-Tenant-Id","tenant");h.set("X-Platform-Tenant","tenant");}).exchange().expectStatus().isUnauthorized();assertEquals(0,calls.get());}
     @Test void ambiguousSignedTenantsNeverCallCore(){var calls=new AtomicInteger();client(List.of("tenant-a","tenant-b"),read(calls),(p,a,r,c)->Mono.just(Decision.permit())).get().uri(PATH).headers(h->h.setBearerAuth("controlled-token")).exchange().expectStatus().isUnauthorized();assertEquals(0,calls.get());}
@@ -51,12 +66,12 @@ class TenantResourceBindingCurrentHttpTest {
         var error=assertThrows(ResponseStatusException.class,()->controller.current(exchange).block());assertEquals(400,error.getStatusCode().value());assertEquals(0,calls.get());
     }
     private static Function<R2dbcOperationBudget,Mono<Current>> read(AtomicInteger calls){return b->{calls.incrementAndGet();return Mono.just(TenantResourceBindingCurrentIngressTest.current(Clock.systemUTC()));};}
-    private static WebTestClient client(Object tenant,Function<R2dbcOperationBudget,Mono<Current>> read,PolicyDecisionPort policy){
+    private static WebTestClient client(Object tenant,Function<R2dbcOperationBudget,Mono<Current>> read,PolicyDecisionPort policy,org.springframework.web.server.WebFilter... additional){
         var properties=TenantResourceBindingCurrentReadinessTest.verified();var auto=new ResourceServerAutoConfiguration();
         var converter=auto.fireflyJwtAuthenticationConverter(new PrincipalFactory(auto.fireflyAuthorityMappingPort(properties)),properties);
         ReactiveJwtDecoder decoder=token->{var builder=Jwt.withTokenValue(token).header("alg","RS256").issuer("https://issuer.example").subject("opaque-subject").issuedAt(Instant.now().minusSeconds(1)).expiresAt(Instant.now().plusSeconds(60));if(tenant!=null)builder.claim("tenant_id",tenant);return Mono.just(builder.build());};
         var chain=auto.fireflySecurityWebFilterChain(ServerHttpSecurity.http(),decoder,converter,policy,properties);
         return WebTestClient.bindToController(new TenantResourceBindingCurrentController(TenantResourceBindingCurrentIngressTest.ingress(read)))
-            .webFilter(new TenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),System::nanoTime),new WebFilterChainProxy(chain)).configureClient().responseTimeout(Duration.ofSeconds(7)).build();
+            .webFilter(new TenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),System::nanoTime),new WebFilterChainProxy(chain)).webFilter(additional).configureClient().responseTimeout(Duration.ofSeconds(7)).build();
     }
 }

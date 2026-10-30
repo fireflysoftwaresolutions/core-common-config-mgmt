@@ -29,6 +29,19 @@ class TenantResourceBindingCurrentContractTest {
         assertArrayEquals(new String[]{"reference","definition","controlVersion","observedAtEpochMillis","validUntilEpochMillis"},java.util.Arrays.stream(components).map(java.lang.reflect.RecordComponent::getName).toArray(String[]::new));
         assertArrayEquals(new Class<?>[]{Reference.class,Definition.class,long.class,long.class,long.class},java.util.Arrays.stream(components).map(java.lang.reflect.RecordComponent::getType).toArray(Class<?>[]::new));
     }
+    @Test void genuineCustomizersExposeCurrentWithoutIdempotencyInput() throws Exception {
+        var controllerType=io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController.class;
+        var method=controllerType.getMethod("current",org.springframework.web.server.ServerWebExchange.class);
+        var controller=new io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController(budget->{throw new AssertionError("Metadata must not invoke CURRENT");});
+        var operation=new io.swagger.v3.oas.models.Operation().operationId(method.getAnnotation(io.swagger.v3.oas.annotations.Operation.class).operationId());
+        new org.fireflyframework.web.openapi.IdempotencyOperationCustomizer().customize(operation,new org.springframework.web.method.HandlerMethod(controller,method));
+        var api=new io.swagger.v3.oas.models.OpenAPI().paths(new io.swagger.v3.oas.models.Paths().addPathItem("/api/v1/tenant-resource-bindings/current",new io.swagger.v3.oas.models.PathItem().get(operation)));
+        new org.fireflyframework.web.openapi.IdempotencyOpenAPICustomizer(new org.fireflyframework.web.idempotency.config.IdempotencyProperties()).customise(api);
+        assertNotNull(operation.getExtensions());assertEquals(Boolean.TRUE,operation.getExtensions().get("x-disable-idempotency"));
+        assertTrue(operation.getParameters()==null||operation.getParameters().isEmpty());assertNull(operation.getRequestBody());
+        assertEquals("tenantResourceBindingBearer",controllerType.getAnnotation(io.swagger.v3.oas.annotations.security.SecurityRequirement.class).name());
+        assertEquals("observeCurrentTenantResourceBinding",operation.getOperationId());
+    }
     private static void schema(Class<?> type,String suffix){
         var resolved=ModelConverters.getInstance().resolveAsResolvedSchema(new AnnotatedType(type).resolveAsRef(true));
         assertEquals("#/components/schemas/TenantResourceBinding"+suffix,resolved.schema.get$ref());
