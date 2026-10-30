@@ -40,7 +40,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
         basePackages = "io.fireflysoftware.common.config.models.repositories",
         excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(
                 type = org.springframework.context.annotation.FilterType.REGEX,
-                pattern = "io\\.fireflysoftware\\.common\\.config\\.models\\.repositories\\.authority\\..*")
+                pattern = "io\\.fireflysoftware\\.common\\.config\\.models\\.repositories\\.(authority|tenantbinding)\\..*")
 )
 @EnableR2dbcAuditing(dateTimeProviderRef="configurationAuditDateTimeProvider")
 @ConfigurationPropertiesScan
