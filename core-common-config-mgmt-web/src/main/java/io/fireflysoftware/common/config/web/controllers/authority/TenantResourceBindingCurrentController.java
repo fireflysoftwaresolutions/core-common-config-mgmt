@@ -53,9 +53,15 @@ public final class TenantResourceBindingCurrentController {
         return new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE);
     }
     @Schema(name="TenantResourceBindingCurrentFailure") public record Failure(String code){}
-    @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<Failure> failure(ResponseStatusException error){
         String code=switch(error.getStatusCode().value()){case 400->"INVALID_TENANT_RESOURCE_BINDING_REQUEST";case 401->"TENANT_RESOURCE_BINDING_AUTHENTICATION_REQUIRED";case 403->"TENANT_RESOURCE_BINDING_PERMISSION_UNAVAILABLE";default->"TENANT_RESOURCE_BINDING_UNAVAILABLE";};
         return ResponseEntity.status(error.getStatusCode()).cacheControl(CacheControl.noStore()).body(new Failure(code));
+    }
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Failure> failure(ResponseStatusException error,ServerWebExchange exchange){
+        var response=failure(error);
+        int status=response.getStatusCode().value();
+        if(status==400||status==401||status==403||status==503)TenantResourceBindingCurrentBudgetFilter.retainOwnedRefusal(exchange,response.getStatusCode());
+        return response;
     }
 }

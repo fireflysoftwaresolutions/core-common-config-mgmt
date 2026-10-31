@@ -11,7 +11,9 @@ import org.fireflyframework.core.transaction.R2dbcOperationBudget;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
@@ -35,14 +37,22 @@ public final class TenantResourceBindingCurrentBudgetFilter implements WebFilter
         try{scope=(Scope)exchange.getAttributes().computeIfAbsent(SCOPE,key->original());}
         catch(RuntimeException error){return unavailable(exchange,null);}
         exchange.getResponse().getHeaders().setCacheControl("no-store");
-        exchange.getResponse().beforeCommit(()->Mono.defer(()->{scope.requireCommit();return Mono.empty();}));
+        exchange.getResponse().beforeCommit(()->Mono.defer(()->{scope.requireCommit(exchange.getResponse());return Mono.empty();}));
         return Mono.defer(()->{
             scope.requireCurrent();
-            return Mono.firstWithSignal(Mono.defer(()->chain.filter(exchange)).doOnSuccess(ignored->scope.requireCurrent()),scope.expiration());
+            return Mono.firstWithSignal(Mono.defer(()->chain.filter(exchange)).doOnSuccess(ignored->scope.requireCompletion(exchange.getResponse())),scope.expiration());
         }).onErrorResume(error->unavailable(exchange,scope));
     }
     public static R2dbcOperationBudget requireBudget(ServerWebExchange exchange){return scope(exchange).budget;}
     public static void retainCurrent(ServerWebExchange exchange,Current current){scope(exchange).retain(current);}
+    public static void retainOwnedRefusal(ServerWebExchange exchange,HttpStatusCode status){
+        int code=Objects.requireNonNull(status).value();
+        if(code!=400&&code!=401&&code!=403&&code!=503)throw new IllegalArgumentException("Exact CURRENT refusal status required");
+        var value=exchange.getAttribute(SCOPE);
+        if(value==null)return;
+        if(!(value instanceof Scope scope))throw new IllegalStateException("Original CURRENT ingress budget required");
+        scope.retainRefusal(code);
+    }
     private static Scope scope(ServerWebExchange exchange){
         var value=exchange.getAttribute(SCOPE);
         if(!(value instanceof Scope scope))throw new IllegalStateException("Original CURRENT ingress budget required");
@@ -66,6 +76,7 @@ public final class TenantResourceBindingCurrentBudgetFilter implements WebFilter
         private long ownerUntil=Long.MAX_VALUE;
         private long ownerBefore,ownerDuration=Long.MAX_VALUE;
         private boolean failureResponse;
+        private int refusalStatus;
         private final Sinks.Many<Boolean> narrowed=Sinks.many().replay().latest();
         private Scope(R2dbcOperationBudget budget,Clock clock,LongSupplier nanos){this.budget=budget;this.clock=clock;this.nanos=nanos;}
         private synchronized void retain(Current value){
@@ -95,7 +106,17 @@ public final class TenantResourceBindingCurrentBudgetFilter implements WebFilter
         private Mono<Void> expiration(){
             return narrowed.asFlux().startWith(Boolean.TRUE).switchMap(ignored->Mono.defer(()->Mono.delay(remaining()).then(Mono.<Void>error(new IllegalStateException("Current response deadline exhausted"))))).next();
         }
-        private synchronized void requireCommit(){if(!failureResponse)requireCurrent();}
-        private synchronized void failureResponse(){failureResponse=true;}
+        private synchronized void retainRefusal(int status){refusalStatus=status;}
+        private boolean matchesRefusal(ServerHttpResponse response){return refusalStatus!=0&&response.getStatusCode()!=null&&response.getStatusCode().value()==refusalStatus;}
+        private synchronized void requireCommit(ServerHttpResponse response){
+            if(refusalStatus!=0){if(!matchesRefusal(response))throw new IllegalStateException("CURRENT refusal response status changed");}
+            else if(!failureResponse)requireCurrent();
+        }
+        private synchronized void requireCompletion(ServerHttpResponse response){
+            // Only the owner handler's completed code-only refusal has no remaining authority result.
+            if(refusalStatus!=0){if(!response.isCommitted()||!matchesRefusal(response))throw new IllegalStateException("Exact completed CURRENT refusal required");}
+            else requireCurrent();
+        }
+        private synchronized void failureResponse(){failureResponse=true;refusalStatus=503;}
     }
 }
