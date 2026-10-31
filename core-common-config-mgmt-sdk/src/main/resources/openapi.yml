@@ -87,8 +87,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -134,8 +136,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -187,8 +191,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -223,8 +229,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -265,8 +273,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -318,8 +328,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -349,8 +361,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -396,8 +410,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -454,8 +470,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -486,8 +504,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -520,8 +540,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -566,8 +588,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -592,8 +616,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -625,8 +651,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -670,8 +698,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -696,8 +726,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -729,8 +761,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -774,8 +808,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -805,8 +841,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -852,8 +890,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -905,8 +945,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -931,8 +973,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -964,8 +1008,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1009,8 +1055,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1036,8 +1084,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1070,8 +1120,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1116,8 +1168,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1149,8 +1203,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1190,8 +1246,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1236,8 +1294,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1263,8 +1323,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1297,8 +1359,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1343,8 +1407,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1369,8 +1435,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1402,8 +1470,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1447,8 +1517,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1473,8 +1545,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1506,8 +1580,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1551,8 +1627,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1577,8 +1655,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1610,8 +1690,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1655,8 +1737,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1682,8 +1766,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1716,8 +1802,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1762,8 +1850,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1788,8 +1878,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1821,8 +1913,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1866,8 +1960,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1892,8 +1988,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1925,8 +2023,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1970,8 +2070,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -1995,8 +2097,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2092,8 +2196,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2127,8 +2233,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2182,8 +2290,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2243,8 +2353,10 @@ paths:
         example: 123e4567-e89b-12d3-a456-426614174000
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2268,6 +2380,785 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/PaginationResponseProviderTenantDTO"
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: decideInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/grants/{grantId}/control-proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: decideInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: grantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/grant-issues:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: issueInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantIssueTargetV2"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantInstitutionGrantDefinition"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantInstitutionGrantDefinition"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/grant-controls:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: executeInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantControlTarget"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultGrantAuthorityControlView"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultGrantAuthorityControlView"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/grant-control-proposals:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: prepareInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantControlPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityControl"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityControl"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/grant-proposals:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: prepareInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityGrant"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityGrant"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/institution-authorities/actions/{actionId}/reconciliations:
+    post:
+      tags:
+      - InstitutionAuthority
+      operationId: reconcileInstitutionAuthorityAction
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NativeGrantActionReconciliationRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/eligibility/transitions:
+    post:
+      tags:
+      - TenantEligibility
+      summary: Execute an approved Tenant eligibility transition
+      operationId: executeTenantEligibilityTransition
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilityTransitionTarget"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/eligibility/transition-proposals:
+    post:
+      tags:
+      - TenantEligibility
+      summary: Prepare a Tenant eligibility transition
+      operationId: prepareTenantEligibilityTransition
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilityPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedTenantEligibilityTransition"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedTenantEligibilityTransition"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/eligibility/suspensions:
+    post:
+      tags:
+      - TenantEligibility
+      summary: Suspend Tenant eligibility
+      operationId: suspendTenantEligibility
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilitySuspendRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/eligibility/proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - TenantEligibility
+      summary: Decide a retained Tenant eligibility proposal
+      operationId: decideTenantEligibilityProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/source-observations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: observeDocumentIssuerSource
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerSourceRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerSourceObservation"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/revocations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: revokeDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/revocation-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerRevocation
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/publications:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: publishDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/publication-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerPublication
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerDecision"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/preparations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: prepareDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPrepare"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/preparation-recoveries:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: recoverDocumentIssuerPreparation
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPrepare"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerReceipt"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenants/{tenantId}/document-issuers/current-observations:
+    post:
+      tags:
+      - DocumentIssuer
+      operationId: observeCurrentDocumentIssuer
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocumentIssuerPublicationReference"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerObservation"
+        "400":
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "403":
+          description: Current permission unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DocumentIssuerFailure"
+      security:
+      - documentIssuerBearer: []
+      x-disable-idempotency: true
   /api/v1/tenants/filter:
     post:
       tags:
@@ -2333,8 +3224,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2362,8 +3255,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2447,8 +3342,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2468,8 +3365,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2552,8 +3451,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2573,8 +3474,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2657,8 +3560,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2684,8 +3589,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2782,8 +3689,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2810,8 +3719,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2894,8 +3805,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -2916,8 +3829,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3001,8 +3916,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3023,8 +3940,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3113,8 +4032,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3142,8 +4063,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3227,8 +4150,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3248,8 +4173,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3332,8 +4259,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3344,6 +4273,568 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/PaginationResponseProviderParameterDTO"
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: decideBootstrapInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  ? /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/grants/{grantId}/control-proposals/{proposalId}/{decision}
+  : post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: decidePlatformInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: grantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/grant-issues:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: issueBootstrapInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantIssueTargetV2"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantInstitutionGrantDefinition"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantInstitutionGrantDefinition"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/grant-controls:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: executePlatformInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantControlTarget"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultGrantAuthorityControlView"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultGrantAuthorityControlView"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/grant-control-proposals:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: preparePlatformInstitutionAuthorityControl
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantControlPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityControl"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityControl"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/grant-proposals:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: prepareBootstrapInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrantPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityGrant"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedInstitutionAuthorityGrant"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/actions/{actionId}/reconciliations:
+    post:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: reconcilePlatformInstitutionAuthorityAction
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NativeGrantActionReconciliationRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/eligibility/transitions:
+    post:
+      tags:
+      - PlatformTenantEligibility
+      summary: Execute an approved Tenant eligibility transition
+      operationId: executePlatformTenantEligibilityTransition
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilityTransitionTarget"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/eligibility/transition-proposals:
+    post:
+      tags:
+      - PlatformTenantEligibility
+      summary: Prepare a Tenant eligibility transition
+      operationId: preparePlatformTenantEligibilityTransition
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilityPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedTenantEligibilityTransition"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedTenantEligibilityTransition"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/eligibility/suspensions:
+    post:
+      tags:
+      - PlatformTenantEligibility
+      summary: Suspend Tenant eligibility
+      operationId: suspendPlatformTenantEligibility
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantEligibilitySuspendRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultTenantEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/eligibility/proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - PlatformTenantEligibility
+      summary: Decide a retained Tenant eligibility proposal
+      operationId: decidePlatformTenantEligibilityProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
+  /api/v1/platform/tenant-statuses/{statusId}/eligibility/transitions:
+    post:
+      tags:
+      - StatusEligibility
+      summary: Execute an approved tenant status eligibility transition
+      operationId: executeStatusEligibilityTransition
+      parameters:
+      - name: statusId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusEligibilityTransitionTarget"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultStatusEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultStatusEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/platform/tenant-statuses/{statusId}/eligibility/transition-proposals:
+    post:
+      tags:
+      - StatusEligibility
+      summary: Prepare a tenant status eligibility transition
+      operationId: prepareStatusEligibilityTransition
+      parameters:
+      - name: statusId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusEligibilityPrepareRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedStatusEligibilityTransition"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultPreparedStatusEligibilityTransition"
+      x-disable-idempotency: true
+  /api/v1/platform/tenant-statuses/{statusId}/eligibility/suspensions:
+    post:
+      tags:
+      - StatusEligibility
+      summary: Suspend tenant status eligibility
+      operationId: suspendStatusEligibility
+      parameters:
+      - name: statusId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusEligibilitySuspendRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultStatusEligibilityView"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultStatusEligibilityView"
+      x-disable-idempotency: true
+  /api/v1/platform/tenant-statuses/{statusId}/eligibility/proposals/{proposalId}/{decision}:
+    post:
+      tags:
+      - StatusEligibility
+      summary: Decide a retained tenant status eligibility proposal
+      operationId: decideStatusEligibilityProposal
+      parameters:
+      - name: statusId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: decision
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - submit
+          - approve
+          - reject
+          - withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstitutionAuthorityDecisionRequest"
+        required: true
+      responses:
+        "200":
+          description: Retained receipt replay
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+        "201":
+          description: Native action committed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionResultNativeAuthorityDecisionOutcome"
+      x-disable-idempotency: true
   /api/v1/feature-flags:
     post:
       tags:
@@ -3353,8 +4844,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3437,8 +4930,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3458,8 +4953,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3542,8 +5039,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3565,8 +5064,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3649,8 +5150,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3671,8 +5174,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3705,8 +5210,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3739,8 +5246,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3773,8 +5282,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3802,8 +5313,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3886,8 +5399,10 @@ paths:
           type: boolean
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3917,14 +5432,183 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
       responses:
         "204":
           description: Cache invalidated
+  ? /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/issuers/{issuerAuthorityId}/grants/{grantId}/versions/{version}
+  : get:
+      tags:
+      - InstitutionAuthority
+      operationId: readHistoricalInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: issuerAuthorityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: grantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionAuthorityGrantHistory"
+  /api/v1/tenants/{tenantId}/institution-authorities/{institutionId}/issuers/{issuerAuthorityId}/current-grant:
+    get:
+      tags:
+      - InstitutionAuthority
+      operationId: observeCurrentInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: issuerAuthorityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: use
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACCOUNTING_BOOK
+          - CASH_OPERATIONS
+          - PRODUCT_ISSUANCE
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionAuthorityGrantObservation"
+  /api/v1/tenants/{tenantId}/institution-authorities/actions/{actionId}:
+    get:
+      tags:
+      - InstitutionAuthority
+      operationId: readInstitutionAuthorityAction
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
+  /api/v1/tenant-resource-bindings/current:
+    get:
+      tags:
+      - TenantResourceBindingCurrent
+      operationId: observeCurrentTenantResourceBinding
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrent"
+        "400":
+          description: Unexpected request input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "401":
+          description: Security authentication failure may have an empty body; post-authentication
+            CURRENT failure returns code-only JSON.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "403":
+          description: Security denial may have an empty body; CURRENT lookup denial
+            returns code-only JSON.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+        "503":
+          description: Protected result unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingCurrentFailure"
+      security:
+      - tenantResourceBindingBearer: []
+      x-disable-idempotency: true
   /api/v1/tenant-brandings/tenant/{tenantId}:
     get:
       tags:
@@ -3941,8 +5625,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -3959,6 +5645,132 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/TenantBrandingDTO"
+  ? /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/issuers/{issuerAuthorityId}/grants/{grantId}/versions/{version}
+  : get:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: readPlatformHistoricalInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: issuerAuthorityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: grantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionAuthorityGrantHistory"
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/{institutionId}/issuers/{issuerAuthorityId}/current-grant:
+    get:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: observePlatformCurrentInstitutionAuthorityGrant
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: institutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: issuerAuthorityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: use
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACCOUNTING_BOOK
+          - CASH_OPERATIONS
+          - PRODUCT_ISSUANCE
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionAuthorityGrantObservation"
+  /api/v1/platform/tenants/{tenantId}/institution-authorities/actions/{actionId}:
+    get:
+      tags:
+      - PlatformInstitutionAuthority
+      operationId: readPlatformInstitutionAuthorityAction
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
   /api/v1/configuration-audits/{id}:
     get:
       tags:
@@ -3975,8 +5787,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -4004,8 +5818,10 @@ paths:
       parameters:
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -4036,8 +5852,10 @@ paths:
           format: uuid
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -4088,8 +5906,10 @@ paths:
           type: string
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -4122,8 +5942,10 @@ paths:
           type: string
       - name: X-Idempotency-Key
         in: header
-        description: "Unique key for idempotent requests. If provided, ensures that\
-          \ identical requests with the same key will only be processed once."
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
         required: false
         schema:
           type: string
@@ -4138,6 +5960,11 @@ paths:
                   $ref: "#/components/schemas/ApiProcessMappingDTO"
 components:
   schemas:
+    DocumentIssuerFailure:
+      type: object
+      properties:
+        code:
+          type: string
     WebhookConfigDTO:
       required:
       - webhookName
@@ -4165,6 +5992,7 @@ components:
           description: Descriptive name for the webhook
           example: Payment Notification Webhook
         webhookUrl:
+          minLength: 1
           pattern: ^https?://.*
           type: string
           description: Target URL for webhook delivery
@@ -6087,10 +7915,12 @@ components:
         maintenanceWindowStart:
           type: string
           description: Maintenance window start time (HH:mm:ss)
+          format: time-local
           example: 02:00:00
         maintenanceWindowEnd:
           type: string
           description: Maintenance window end time (HH:mm:ss)
+          format: time-local
           example: 04:00:00
         availabilitySchedule:
           type: string
@@ -6491,6 +8321,1127 @@ components:
           format: int32
       description: Represents a paginated response containing a list of items and
         pagination metadata.
+    InstitutionAuthorityDecisionRequest:
+      required:
+      - actionId
+      - expectedProposalControlVersion
+      - proposalRevision
+      - reason
+      - targetIntentDigest
+      type: object
+      properties:
+        actionId:
+          type: string
+        expectedProposalControlVersion:
+          type: integer
+          format: int64
+        proposalRevision:
+          type: integer
+          format: int64
+        targetIntentDigest:
+          type: string
+        reason:
+          type: string
+      additionalProperties: false
+    NativeAuthorityActionResultNativeAuthorityDecisionOutcome:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptNativeAuthorityDecisionOutcome"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityActor:
+      type: object
+      properties:
+        kind:
+          type: string
+        issuer:
+          type: string
+        subject:
+          type: string
+        tenantId:
+          type: string
+        employeeId:
+          type: string
+        clientId:
+          type: string
+    NativeAuthorityDecisionOutcome:
+      type: object
+      properties:
+        proposalId:
+          type: string
+        state:
+          type: string
+        controlVersion:
+          type: integer
+          format: int64
+        decisionId:
+          type: string
+        targetDigest:
+          type: string
+    NativeAuthorityReceiptNativeAuthorityDecisionOutcome:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/NativeAuthorityDecisionOutcome"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    StatusEligibilityView:
+      type: object
+      properties:
+        statusId:
+          type: string
+        generation:
+          type: integer
+          format: int64
+        enabled:
+          type: boolean
+        statusCode:
+          type: string
+        lastActionId:
+          type: string
+    TenantEligibilityView:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        tenantGeneration:
+          type: integer
+          format: int64
+        statusId:
+          type: string
+        statusGeneration:
+          type: integer
+          format: int64
+        tenantActive:
+          type: boolean
+        statusEnabled:
+          type: boolean
+        statusCode:
+          type: string
+        eligibleNow:
+          type: boolean
+        lastActionId:
+          type: string
+    GrantIssueTarget:
+      required:
+      - actionId
+      - effectiveFromEpochMillis
+      - effectiveToEpochMillis
+      - evidenceReferences
+      - expectedGrantHeadVersion
+      - grantId
+      - institutionId
+      - issuerAuthorityId
+      - proposalId
+      - proposalRevision
+      - reason
+      - uses
+      - version
+      type: object
+      properties:
+        actionId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        grantId:
+          type: string
+        institutionId:
+          type: string
+        issuerAuthorityId:
+          type: string
+        version:
+          type: integer
+          format: int64
+        expectedGrantHeadVersion:
+          type: integer
+          format: int64
+        uses:
+          type: array
+          items:
+            type: string
+            enum:
+            - ACCOUNTING_BOOK
+            - CASH_OPERATIONS
+            - PRODUCT_ISSUANCE
+        effectiveFromEpochMillis:
+          type: integer
+          format: int64
+        effectiveToEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    GrantIssueTargetV2:
+      required:
+      - eligibilityEpoch
+      - grant
+      type: object
+      properties:
+        grant:
+          $ref: "#/components/schemas/GrantIssueTarget"
+        eligibilityEpoch:
+          $ref: "#/components/schemas/TenantEligibilityEpoch"
+      additionalProperties: false
+    TenantEligibilityEpoch:
+      required:
+      - statusGeneration
+      - statusId
+      - tenantGeneration
+      type: object
+      properties:
+        tenantGeneration:
+          type: integer
+          format: int64
+        statusId:
+          type: string
+        statusGeneration:
+          type: integer
+          format: int64
+      additionalProperties: false
+    NativeAuthorityActionResultTenantInstitutionGrantDefinition:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptTenantInstitutionGrantDefinition"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptTenantInstitutionGrantDefinition:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/TenantInstitutionGrantDefinition"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    TenantInstitutionGrantDefinition:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        target:
+          $ref: "#/components/schemas/GrantIssueTargetV2"
+        definitionEncoding:
+          type: string
+        canonicalDefinition:
+          type: string
+        definitionDigest:
+          type: string
+        recordedAtEpochMillis:
+          type: integer
+          format: int64
+    GrantControlTarget:
+      required:
+      - actionId
+      - evidenceReferences
+      - expectedControlVersion
+      - expectedEpoch
+      - expectedState
+      - grantId
+      - institutionId
+      - issuerAuthorityId
+      - notAfterEpochMillis
+      - proposalId
+      - proposalRevision
+      - reason
+      - targetState
+      - version
+      type: object
+      properties:
+        actionId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        grantId:
+          type: string
+        version:
+          type: integer
+          format: int64
+        institutionId:
+          type: string
+        issuerAuthorityId:
+          type: string
+        expectedControlVersion:
+          type: integer
+          format: int64
+        expectedState:
+          type: string
+        targetState:
+          type: string
+        expectedEpoch:
+          $ref: "#/components/schemas/TenantEligibilityEpoch"
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+      additionalProperties: false
+    GrantAuthorityControlView:
+      type: object
+      properties:
+        state:
+          type: string
+        controlVersion:
+          type: integer
+          format: int64
+        lastActionId:
+          type: string
+    NativeAuthorityActionResultGrantAuthorityControlView:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptGrantAuthorityControlView"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptGrantAuthorityControlView:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/GrantAuthorityControlView"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    GrantControlDraft:
+      required:
+      - evidenceReferences
+      - expectedControlVersion
+      - expectedState
+      - grantId
+      - issuerAuthorityId
+      - reason
+      - targetState
+      - version
+      type: object
+      properties:
+        grantId:
+          type: string
+        version:
+          type: integer
+          format: int64
+        issuerAuthorityId:
+          type: string
+        expectedControlVersion:
+          type: integer
+          format: int64
+        expectedState:
+          type: string
+        targetState:
+          type: string
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    GrantControlPrepareRequest:
+      required:
+      - actionId
+      - draft
+      - notAfterEpochMillis
+      - targetActionId
+      type: object
+      properties:
+        actionId:
+          type: string
+        targetActionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        draft:
+          $ref: "#/components/schemas/GrantControlDraft"
+      additionalProperties: false
+    NativeAuthorityActionResultPreparedInstitutionAuthorityControl:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptPreparedInstitutionAuthorityControl"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptPreparedInstitutionAuthorityControl:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/PreparedInstitutionAuthorityControl"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    PreparedInstitutionAuthorityControl:
+      type: object
+      properties:
+        proposalId:
+          type: string
+        target:
+          $ref: "#/components/schemas/GrantControlTarget"
+        targetCanonical:
+          type: string
+        targetDigest:
+          type: string
+        targetEncoding:
+          type: string
+    GrantIssueDraft:
+      required:
+      - effectiveFromEpochMillis
+      - effectiveToEpochMillis
+      - evidenceReferences
+      - existingInstitutionId
+      - existingIssuerAuthorityId
+      - expectedGrantHeadVersion
+      - reason
+      - uses
+      type: object
+      properties:
+        existingInstitutionId:
+          type: string
+          nullable: true
+        existingIssuerAuthorityId:
+          type: string
+          nullable: true
+        expectedGrantHeadVersion:
+          type: integer
+          format: int64
+        uses:
+          type: array
+          items:
+            type: string
+            enum:
+            - ACCOUNTING_BOOK
+            - CASH_OPERATIONS
+            - PRODUCT_ISSUANCE
+        effectiveFromEpochMillis:
+          type: integer
+          format: int64
+        effectiveToEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    GrantPrepareRequest:
+      required:
+      - actionId
+      - draft
+      - notAfterEpochMillis
+      - targetActionId
+      type: object
+      properties:
+        actionId:
+          type: string
+        targetActionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        draft:
+          $ref: "#/components/schemas/GrantIssueDraft"
+      additionalProperties: false
+    NativeAuthorityActionResultPreparedInstitutionAuthorityGrant:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptPreparedInstitutionAuthorityGrant"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptPreparedInstitutionAuthorityGrant:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/PreparedInstitutionAuthorityGrant"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    PreparedInstitutionAuthorityGrant:
+      type: object
+      properties:
+        proposalId:
+          type: string
+        target:
+          $ref: "#/components/schemas/GrantIssueTargetV2"
+        targetCanonical:
+          type: string
+        targetDigest:
+          type: string
+        targetEncoding:
+          type: string
+    NativeGrantActionReconciliationRequest:
+      required:
+      - operation
+      - originalBase64
+      type: object
+      properties:
+        operation:
+          type: string
+          enum:
+          - GRANT_ISSUE
+          - GRANT_CONTROL
+        originalBase64:
+          type: string
+      additionalProperties: false
+    NativeAuthorityActionSnapshot:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        state:
+          type: string
+          enum:
+          - UNKNOWN
+          - RECEIPT_FOUND
+          - NO_EFFECT_FINAL
+        canonicalReceiptJson:
+          type: string
+        receiptDigest:
+          type: string
+        historicalOnly:
+          type: boolean
+    TenantEligibilityTransitionTarget:
+      required:
+      - actionId
+      - evidenceReferences
+      - expectedEpoch
+      - expectedTargetStatusGeneration
+      - notAfterEpochMillis
+      - proposalId
+      - proposalRevision
+      - reason
+      - targetActive
+      - targetStatusId
+      type: object
+      properties:
+        actionId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        expectedEpoch:
+          $ref: "#/components/schemas/TenantEligibilityEpoch"
+        targetStatusId:
+          type: string
+        expectedTargetStatusGeneration:
+          type: integer
+          format: int64
+        targetActive:
+          type: boolean
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+      additionalProperties: false
+    NativeAuthorityActionResultTenantEligibilityView:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptTenantEligibilityView"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptTenantEligibilityView:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    TenantEligibilityPrepareRequest:
+      required:
+      - actionId
+      - draft
+      - notAfterEpochMillis
+      - targetActionId
+      type: object
+      properties:
+        actionId:
+          type: string
+        targetActionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        draft:
+          $ref: "#/components/schemas/TenantEligibilityTransitionDraft"
+      additionalProperties: false
+    TenantEligibilityTransitionDraft:
+      required:
+      - evidenceReferences
+      - reason
+      - targetActive
+      - targetStatusId
+      type: object
+      properties:
+        targetStatusId:
+          type: string
+        targetActive:
+          type: boolean
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    NativeAuthorityActionResultPreparedTenantEligibilityTransition:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptPreparedTenantEligibilityTransition"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptPreparedTenantEligibilityTransition:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/PreparedTenantEligibilityTransition"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    PreparedTenantEligibilityTransition:
+      type: object
+      properties:
+        proposalId:
+          type: string
+        target:
+          $ref: "#/components/schemas/TenantEligibilityTransitionTarget"
+        targetCanonical:
+          type: string
+        targetDigest:
+          type: string
+        targetEncoding:
+          type: string
+    TenantEligibilitySuspendRequest:
+      required:
+      - actionId
+      - evidenceReferences
+      - notAfterEpochMillis
+      - reason
+      type: object
+      properties:
+        actionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    DocumentIssuerSourceRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        actionId:
+          type: string
+        brandingId:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
+    DocumentIssuerUse:
+      type: object
+      properties:
+        purpose:
+          type: string
+          enum:
+          - DEPOSIT_ACCOUNT_ENROLLMENT
+        documentType:
+          type: string
+        locale:
+          type: string
+    DocumentIssuerSourceObservation:
+      type: object
+      properties:
+        source:
+          $ref: "#/components/schemas/DocumentIssuerSourceSnapshot"
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        nativeUntilEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerSourceSnapshot:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        tenantVersion:
+          type: integer
+          format: int64
+        brandingId:
+          type: string
+        brandingVersion:
+          type: integer
+          format: int64
+        sourceGeneration:
+          type: integer
+          format: int64
+        tenantCode:
+          type: string
+        tenantName:
+          type: string
+        tenantActive:
+          type: boolean
+        brandingActive:
+          type: boolean
+        logoUrl:
+          type: string
+        primaryColor:
+          type: string
+        footerText:
+          type: string
+    DocumentIssuerDecision:
+      type: object
+      properties:
+        actionId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        expectedGeneration:
+          type: integer
+          format: int64
+        reason:
+          type: string
+    DocumentIssuerReceipt:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        generation:
+          type: integer
+          format: int64
+        actionId:
+          type: string
+        operation:
+          type: string
+          enum:
+          - PREPARE
+          - PUBLISH
+          - REVOKE
+          - CURRENT
+          - SOURCE
+          - HISTORY
+          - RECOVER
+        state:
+          type: string
+          enum:
+          - PREPARED
+          - PUBLISHED
+          - REVOKED
+        definitionDigest:
+          type: string
+        intentDigest:
+          type: string
+        recordedAtEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerDefinition:
+      type: object
+      properties:
+        issuerId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        issuerCode:
+          type: string
+        displayName:
+          type: string
+        contactEmail:
+          type: string
+        uses:
+          type: array
+          items:
+            $ref: "#/components/schemas/DocumentIssuerUse"
+        source:
+          $ref: "#/components/schemas/DocumentIssuerSourceSnapshot"
+        effectiveFromEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerPrepare:
+      type: object
+      properties:
+        actionId:
+          type: string
+        publicationId:
+          type: string
+        expectedGeneration:
+          type: integer
+          format: int64
+        definition:
+          $ref: "#/components/schemas/DocumentIssuerDefinition"
+    DocumentIssuerPublicationReference:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
+    DocumentIssuerObservation:
+      type: object
+      properties:
+        reference:
+          $ref: "#/components/schemas/DocumentIssuerReference"
+        definition:
+          $ref: "#/components/schemas/DocumentIssuerDefinition"
+        generation:
+          type: integer
+          format: int64
+        sourceGeneration:
+          type: integer
+          format: int64
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        nativeUntilEpochMillis:
+          type: integer
+          format: int64
+        effectiveUntilEpochMillis:
+          type: integer
+          format: int64
+    DocumentIssuerReference:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        issuerId:
+          type: string
+        publicationId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+        use:
+          $ref: "#/components/schemas/DocumentIssuerUse"
     PaginationResponseTenantDTO:
       type: object
       properties:
@@ -6689,6 +9640,213 @@ components:
           format: int32
       description: Represents a paginated response containing a list of items and
         pagination metadata.
+    StatusEligibilityTransitionTarget:
+      required:
+      - actionId
+      - evidenceReferences
+      - expectedStatusGeneration
+      - notAfterEpochMillis
+      - proposalId
+      - proposalRevision
+      - reason
+      - targetActive
+      type: object
+      properties:
+        actionId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        expectedStatusGeneration:
+          type: integer
+          format: int64
+        targetActive:
+          type: boolean
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+      additionalProperties: false
+    NativeAuthorityActionResultStatusEligibilityView:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptStatusEligibilityView"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptStatusEligibilityView:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/StatusEligibilityView"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    StatusEligibilityPrepareRequest:
+      required:
+      - actionId
+      - draft
+      - notAfterEpochMillis
+      - targetActionId
+      type: object
+      properties:
+        actionId:
+          type: string
+        targetActionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        draft:
+          $ref: "#/components/schemas/StatusEligibilityTransitionDraft"
+      additionalProperties: false
+    StatusEligibilityTransitionDraft:
+      required:
+      - evidenceReferences
+      - reason
+      - targetActive
+      type: object
+      properties:
+        targetActive:
+          type: boolean
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    NativeAuthorityActionResultPreparedStatusEligibilityTransition:
+      type: object
+      properties:
+        replay:
+          type: boolean
+        receipt:
+          $ref: "#/components/schemas/NativeAuthorityReceiptPreparedStatusEligibilityTransition"
+        currentTenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        currentStatusEligibility:
+          $ref: "#/components/schemas/StatusEligibilityView"
+    NativeAuthorityReceiptPreparedStatusEligibilityTransition:
+      type: object
+      properties:
+        encoding:
+          type: string
+        tenantId:
+          type: string
+        actionId:
+          type: string
+        operation:
+          type: string
+        resourceId:
+          type: string
+        proposalId:
+          type: string
+        proposalRevision:
+          type: integer
+          format: int64
+        originalBase64:
+          type: string
+        canonicalIntent:
+          type: string
+        intentDigest:
+          type: string
+        deadlineEpochMillis:
+          type: integer
+          format: int64
+        resultKind:
+          type: string
+        result:
+          $ref: "#/components/schemas/PreparedStatusEligibilityTransition"
+        actor:
+          $ref: "#/components/schemas/NativeAuthorityActor"
+        acceptedAtEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        eventId:
+          type: string
+    PreparedStatusEligibilityTransition:
+      type: object
+      properties:
+        proposalId:
+          type: string
+        target:
+          $ref: "#/components/schemas/StatusEligibilityTransitionTarget"
+        targetCanonical:
+          type: string
+        targetDigest:
+          type: string
+        targetEncoding:
+          type: string
+    StatusEligibilitySuspendRequest:
+      required:
+      - actionId
+      - evidenceReferences
+      - notAfterEpochMillis
+      - reason
+      type: object
+      properties:
+        actionId:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
     PaginationResponseFeatureFlagDTO:
       type: object
       properties:
@@ -6751,6 +9909,7 @@ components:
           description: Reference to tenant that owns the changed entity
           format: uuid
         entityType:
+          minLength: 1
           type: string
           description: Type of entity that was changed
           example: Tenant
@@ -6759,6 +9918,7 @@ components:
           description: Unique identifier of the changed entity
           format: uuid
         action:
+          minLength: 1
           type: string
           description: "Type of action performed: CREATE, UPDATE, DELETE, ACTIVATE,\
             \ DEACTIVATE"
@@ -6991,3 +10151,128 @@ components:
           format: int32
       description: Represents a paginated response containing a list of items and
         pagination metadata.
+    InstitutionAuthorityGrantHistory:
+      type: object
+      properties:
+        definition:
+          $ref: "#/components/schemas/TenantInstitutionGrantDefinition"
+        historicalOnly:
+          type: boolean
+    InstitutionAuthorityGrantObservation:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        institutionId:
+          type: string
+        issuerAuthorityId:
+          type: string
+        requestedUse:
+          type: string
+          enum:
+          - ACCOUNTING_BOOK
+          - CASH_OPERATIONS
+          - PRODUCT_ISSUANCE
+        state:
+          type: string
+        definition:
+          $ref: "#/components/schemas/TenantInstitutionGrantDefinition"
+        control:
+          $ref: "#/components/schemas/GrantAuthorityControlView"
+        headVersion:
+          type: integer
+          format: int64
+        tenantEligibility:
+          $ref: "#/components/schemas/TenantEligibilityView"
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        validUntilEpochMillis:
+          type: integer
+          format: int64
+        denialReason:
+          type: string
+    TenantResourceBindingCurrentFailure:
+      type: object
+      properties:
+        code:
+          type: string
+    TenantResourceBindingCurrent:
+      type: object
+      properties:
+        reference:
+          $ref: "#/components/schemas/TenantResourceBindingReference"
+        definition:
+          $ref: "#/components/schemas/TenantResourceBindingDefinition"
+        controlVersion:
+          type: integer
+          format: int64
+        observedAtEpochMillis:
+          type: integer
+          format: int64
+        validUntilEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingDefinition:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        namespace:
+          $ref: "#/components/schemas/TenantResourceBindingNamespace"
+        resourceTenant:
+          $ref: "#/components/schemas/TenantResourceBindingResourceTenant"
+        version:
+          type: integer
+          format: int64
+        eligibility:
+          $ref: "#/components/schemas/TenantResourceBindingEligibility"
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingEligibility:
+      type: object
+      properties:
+        tenantGeneration:
+          type: integer
+          format: int64
+        statusId:
+          type: string
+          format: uuid
+        statusGeneration:
+          type: integer
+          format: int64
+    TenantResourceBindingNamespace:
+      type: object
+      properties:
+        issuer:
+          type: string
+        platformTenant:
+          type: string
+    TenantResourceBindingReference:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
+    TenantResourceBindingResourceTenant:
+      type: object
+      properties:
+        value:
+          type: string
+          format: uuid
+  securitySchemes:
+    tenantResourceBindingBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    documentIssuerBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

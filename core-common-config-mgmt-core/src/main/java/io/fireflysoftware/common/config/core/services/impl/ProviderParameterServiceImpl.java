@@ -70,6 +70,7 @@ public class ProviderParameterServiceImpl implements ProviderParameterService {
                     providerParameterDTO.setId(id);
                     ProviderParameter updatedEntity = mapper.toEntity(providerParameterDTO);
                     updatedEntity.setCreatedAt(existingEntity.getCreatedAt());
+                    updatedEntity.setVersion(existingEntity.getVersion());
                     return repository.save(updatedEntity);
                 })
                 .map(mapper::toDTO);

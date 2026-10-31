@@ -21,9 +21,9 @@ spring:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslMode=${DB_SSL_MODE}
-    user: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=${DB_SSL_MODE}
+    user: ${DB_MIGRATION_USERNAME:${DB_USERNAME}}
+    password: ${DB_MIGRATION_PASSWORD:${DB_PASSWORD}}
 
   threads:
     virtual:
@@ -68,6 +68,20 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 firefly:
+  security:
+    resource-server:
+      enabled: true
+      strict-policy: true
+      issuer: ${FIREFLY_AUTHORITY_ISSUER}
+      audiences: ${FIREFLY_AUTHORITY_AUDIENCE}
+      tenant-claim-paths: [tenant_id]
+      tenant-required: true
+      jwk-set-uri: ${FIREFLY_AUTHORITY_JWKS_URI}
+  configuration:
+    authority:
+      platform-tenant-id: ${FIREFLY_PLATFORM_TENANT_ID}
+      policy-url: ${FIREFLY_CONFIGURATION_POLICY_URL}
+      policy-path: firefly/configuration/allow
   plugin-manager:
     scan-on-startup: true
     auto-start-plugins: true
@@ -99,7 +113,7 @@ spring:
     username: ${DB_USERNAME:firefly}
     password: ${DB_PASSWORD:firefly}
   flyway:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:firefly_config}?sslMode=${DB_SSL_MODE:disable}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:firefly_config}?sslmode=${DB_SSL_MODE:disable}
     user: ${DB_USERNAME:firefly}
     password: ${DB_PASSWORD:firefly}
 
@@ -145,3 +159,13 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: openapi-gen
+firefly:
+  security:
+    resource-server:
+      enabled: false

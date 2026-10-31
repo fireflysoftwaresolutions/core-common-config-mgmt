@@ -1,0 +1,3 @@
+package io.fireflysoftware.common.config.interfaces.authority;
+
+public record InstitutionAuthorityGrantObservation(String tenantId,String institutionId,String issuerAuthorityId,InstitutionAuthorityUse requestedUse,String state,TenantInstitutionGrantDefinition definition,GrantAuthorityControlView control,Long headVersion,TenantEligibilityView tenantEligibility,long observedAtEpochMillis,Long validUntilEpochMillis,String denialReason) {}

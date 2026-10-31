@@ -70,6 +70,7 @@ public class ProviderValueMappingServiceImpl implements ProviderValueMappingServ
                     providerValueMappingDTO.setId(id);
                     ProviderValueMapping updatedEntity = mapper.toEntity(providerValueMappingDTO);
                     updatedEntity.setCreatedAt(existingEntity.getCreatedAt());
+                    updatedEntity.setVersion(existingEntity.getVersion());
                     return repository.save(updatedEntity);
                 })
                 .map(mapper::toDTO);

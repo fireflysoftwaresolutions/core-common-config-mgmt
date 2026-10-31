@@ -34,6 +34,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "io.fireflysoftware.common.config.web.controllers")
 public class OpenApiGenApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OpenApiGenApplication.class, args);
+        var application=new SpringApplication(OpenApiGenApplication.class);
+        application.setDefaultProperties(java.util.Map.of("firefly.configuration.document-issuer.enabled",true,"firefly.configuration.tenant-resource-binding.enabled",true));
+        application.run(args);
     }
 }

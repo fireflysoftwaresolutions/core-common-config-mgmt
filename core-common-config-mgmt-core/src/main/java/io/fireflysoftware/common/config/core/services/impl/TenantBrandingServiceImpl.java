@@ -77,6 +77,7 @@ public class TenantBrandingServiceImpl implements TenantBrandingService {
                     tenantBrandingDTO.setId(id);
                     TenantBranding updatedEntity = mapper.toEntity(tenantBrandingDTO);
                     updatedEntity.setCreatedAt(existingEntity.getCreatedAt());
+                    updatedEntity.setVersion(existingEntity.getVersion());
                     return repository.save(updatedEntity);
                 })
                 .map(mapper::toDTO);

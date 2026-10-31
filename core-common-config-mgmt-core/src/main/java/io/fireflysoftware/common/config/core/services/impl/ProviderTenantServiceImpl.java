@@ -83,6 +83,7 @@ public class ProviderTenantServiceImpl implements ProviderTenantService {
 
                     // Preserve created date
                     updatedEntity.setCreatedAt(existingEntity.getCreatedAt());
+                    updatedEntity.setVersion(existingEntity.getVersion());
 
                     // Save updated entity
                     return repository.save(updatedEntity);
