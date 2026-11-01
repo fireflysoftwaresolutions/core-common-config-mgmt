@@ -6,8 +6,8 @@ import io.fireflysoftware.common.config.models.entities.tenantbinding.TenantReso
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.Objects;
-final class TenantResourceBindingRowsMapper {
- private TenantResourceBindingRowsMapper() {}
+final class TenantResourceBindingRowsMapperImpl {
+ private TenantResourceBindingRowsMapperImpl() {}
  static Definition definition(TenantResourceBindingRows.Definition row){
   var value=new Definition(row.bindingId(),new Namespace(row.issuer(),row.platformTenant()),new ResourceTenant(row.resourceTenantId()),row.version(),new Eligibility(row.tenantGeneration(),row.statusId(),row.statusGeneration()),row.notAfterEpochMillis());
   if(!TenantResourceBindingCodec.namespaceDigest(value.namespace()).equals(row.namespaceDigest())||!TenantResourceBindingCodec.definitionDigest(value).equals(row.definitionDigest()))throw unavailable();return value;

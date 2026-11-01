@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Supplier;
-import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapper.*;
+import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapperImpl.*;
 
 /** Calls real native entrypoints; Java never creates a successful authority window or completion. */
 public final class TenantResourceBindingNativeAuthorityImpl implements TenantResourceBindingNativeAuthority,TenantResourceBindingNativeGovernance {

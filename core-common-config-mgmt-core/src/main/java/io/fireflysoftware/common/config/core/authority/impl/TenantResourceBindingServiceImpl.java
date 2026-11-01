@@ -11,7 +11,7 @@ import org.springframework.transaction.reactive.*;
 import reactor.core.publisher.Mono;
 import java.util.*;
 import java.util.function.Supplier;
-import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapper.*;
+import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapperImpl.*;
 
 public final class TenantResourceBindingServiceImpl implements TenantResourceBindingService {
  private final TenantResourceBindingLookupAuthorization lookups;
@@ -29,7 +29,7 @@ public final class TenantResourceBindingServiceImpl implements TenantResourceBin
   return lookups.authorize(original).flatMap(admission->lookups.reauthorize(admission,"ACQUIRE").then(Mono.defer(()->own(original,admission::remaining,()->
    nativeAuthority.openLookup(admission).switchIfEmpty(Mono.error(unavailable())).flatMap(window->{
     window(window,admission.namespace(),admission.validUntilEpochMillis());var narrowed=admission.narrowNative(window.validUntilEpochMillis());
-    return store.current(window.namespaceDigest()).switchIfEmpty(Mono.error(unavailable())).map(row->TenantResourceBindingRowsMapper.current(row,admission.namespace(),window))
+    return store.current(window.namespaceDigest()).switchIfEmpty(Mono.error(unavailable())).map(row->TenantResourceBindingRowsMapperImpl.current(row,admission.namespace(),window))
       .flatMap(current->lookups.reauthorize(narrowed,"COMMIT").thenReturn(new LookupResult(current,narrowed))).timeout(narrowed.remaining());
    }))))).flatMap(done->lookups.reauthorize(done.admission(),"RESPONSE").then(Mono.fromSupplier(()->{done.admission().requireCurrent();return done.current();})));
  }
@@ -61,16 +61,16 @@ public final class TenantResourceBindingServiceImpl implements TenantResourceBin
   var definition=command.definition();var reference=TenantResourceBindingCodec.reference(definition);var namespace=TenantResourceBindingCodec.namespaceDigest(definition.namespace());
   return store.head(namespace).map(Optional::of).defaultIfEmpty(Optional.empty()).flatMap(prior->{
    if(open.replay()!=null){
-    var head=prior.orElseThrow(TenantResourceBindingRowsMapper::unavailable);
+    var head=prior.orElseThrow(TenantResourceBindingRowsMapperImpl::unavailable);
     if(!head.bindingId().equals(reference.bindingId())||head.definitionVersion()!=reference.version()||!head.definitionDigest().equals(reference.definitionDigest())||head.controlVersion()!=nextVersion||!head.state().equals(nextState.name()))throw unavailable();
-    return store.definition(reference.bindingId(),reference.version()).switchIfEmpty(Mono.error(unavailable())).doOnNext(row->{if(!definition.equals(TenantResourceBindingRowsMapper.definition(row)))throw unavailable();}).then();
+    return store.definition(reference.bindingId(),reference.version()).switchIfEmpty(Mono.error(unavailable())).doOnNext(row->{if(!definition.equals(TenantResourceBindingRowsMapperImpl.definition(row)))throw unavailable();}).then();
    }
    var next=new TenantResourceBindingRows.Head(namespace,reference.bindingId(),reference.version(),reference.definitionDigest(),nextVersion,nextState.name());
    Mono<Void> change;
    if(command.operation()==Operation.TENANT_RESOURCE_BINDING_REVOKE){
-    var head=prior.orElseThrow(TenantResourceBindingRowsMapper::unavailable);
+    var head=prior.orElseThrow(TenantResourceBindingRowsMapperImpl::unavailable);
     if(head.controlVersion()!=command.expectedControlVersion()||!head.bindingId().equals(reference.bindingId())||head.definitionVersion()!=reference.version()||!head.definitionDigest().equals(reference.definitionDigest())||!head.state().equals("ACTIVE"))throw unavailable();
-    change=store.definition(reference.bindingId(),reference.version()).switchIfEmpty(Mono.error(unavailable())).doOnNext(row->{if(!definition.equals(TenantResourceBindingRowsMapper.definition(row)))throw unavailable();}).then(Mono.defer(()->store.advance(head,next)));
+    change=store.definition(reference.bindingId(),reference.version()).switchIfEmpty(Mono.error(unavailable())).doOnNext(row->{if(!definition.equals(TenantResourceBindingRowsMapperImpl.definition(row)))throw unavailable();}).then(Mono.defer(()->store.advance(head,next)));
    }else{
     if(open.originalMakerIssuer()==null||open.originalMakerIssuer().isBlank()||open.originalMakerSubject()==null||open.originalMakerSubject().isBlank())throw unavailable();
     if(prior.isEmpty()){if(command.expectedControlVersion()!=0||reference.version()!=1)throw unavailable();change=Mono.defer(()->store.insertHead(next));}

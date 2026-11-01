@@ -15,7 +15,7 @@ class TenantResourceBindingCurrentContractTest {
     @Test void resourceTenantSchemaIsUnique(){schema(ResourceTenant.class,"ResourceTenant");}
     @Test void eligibilitySchemaIsUnique(){schema(Eligibility.class,"Eligibility");}
     @Test void productionControllerExists(){assertNotNull(type("io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController"));}
-    @Test void originalBudgetFilterExists(){assertTrue(WebFilter.class.isAssignableFrom(type("io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter")));}
+    @Test void originalBudgetFilterExists(){assertTrue(WebFilter.class.isAssignableFrom(type("io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl")));}
     @Test void exactGetOperationHasNoClientAuthorityParameters() throws Exception {
         var type=type("io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController");
         var method=type.getMethod("current",org.springframework.web.server.ServerWebExchange.class);

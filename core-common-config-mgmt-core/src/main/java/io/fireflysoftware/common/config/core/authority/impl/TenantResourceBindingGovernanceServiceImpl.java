@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Consumer;
-import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapper.*;
+import static io.fireflysoftware.common.config.core.authority.impl.TenantResourceBindingRowsMapperImpl.*;
 public final class TenantResourceBindingGovernanceServiceImpl implements TenantResourceBindingGovernanceService {
  private final InstitutionAuthorityAuthorization governance;
  private final R2dbcTransactionManager manager;

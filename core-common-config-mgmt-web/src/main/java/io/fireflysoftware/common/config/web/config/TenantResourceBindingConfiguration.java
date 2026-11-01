@@ -34,12 +34,12 @@ public class TenantResourceBindingConfiguration {
  @Bean public TenantResourceBindingGovernanceService tenantResourceBindingGovernanceService(InstitutionAuthorityAuthorization governance,R2dbcTransactionManager manager,TenantResourceBindingNativeGovernance nativeAuthority){return new TenantResourceBindingGovernanceServiceImpl(governance,manager,nativeAuthority);}
 
  @Bean public io.fireflysoftware.common.config.web.tenantbinding.TenantResourceBindingCurrentIngress tenantResourceBindingCurrentIngress(TenantResourceBindingService service){return new io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentIngressImpl(service);}
- @Bean public io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter tenantResourceBindingCurrentBudgetFilter(@Qualifier("institutionAuthorityClock") Clock clock,ResourceServerProperties verified,org.springframework.core.env.Environment environment){
+ @Bean public io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl tenantResourceBindingCurrentBudgetFilter(@Qualifier("institutionAuthorityClock") Clock clock,ResourceServerProperties verified,org.springframework.core.env.Environment environment){
   if(!environment.getProperty("firefly.security.resource-server.enabled",Boolean.class,true)||!verified.isStrictPolicy()||verified.getIssuer()==null||verified.getIssuer().isBlank()||verified.getJwkSetUri()==null||verified.getJwkSetUri().isBlank()||verified.getAudiences().isEmpty()||!verified.isTenantRequired()||!java.util.List.of("tenant_id").equals(verified.getTenantClaimPaths()))throw new IllegalArgumentException("Verified claim-only required tenant projection and strict resource server required for CURRENT HTTP");
-  var route=org.springframework.http.server.PathContainer.parsePath(io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter.PATH);
+  var route=org.springframework.http.server.PathContainer.parsePath(io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl.PATH);
   var parser=new org.springframework.web.util.pattern.PathPatternParser();
   if(verified.getPermitMatchers()==null||verified.getPermitMatchers().stream().anyMatch(pattern->parser.parse(pattern).matches(route)))throw new IllegalArgumentException("CURRENT HTTP cannot be a public matcher");
-  return new io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter(clock,System::nanoTime);
+  return new io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl(clock,System::nanoTime);
  }
 
 }

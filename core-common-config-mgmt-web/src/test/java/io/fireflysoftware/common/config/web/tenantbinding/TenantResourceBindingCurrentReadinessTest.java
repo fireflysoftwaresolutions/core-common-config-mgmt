@@ -2,7 +2,7 @@ package io.fireflysoftware.common.config.web.tenantbinding;
 
 import io.fireflysoftware.common.config.web.config.TenantResourceBindingConfiguration;
 import io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController;
-import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter;
+import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl;
 import java.time.Clock;
 import java.util.List;
 import org.fireflyframework.security.rs.ResourceServerProperties;
@@ -21,9 +21,9 @@ class TenantResourceBindingCurrentReadinessTest {
     @Test void disabledResourceServerIsRefused(){assertThrows(IllegalArgumentException.class,()->filter(verified(),new MockEnvironment().withProperty("firefly.security.resource-server.enabled","false")));}
     @Test void nonStrictPolicyIsRefused(){var properties=verified();properties.setStrictPolicy(false);assertThrows(IllegalArgumentException.class,()->filter(properties,new MockEnvironment()));}
     @Test void missingIssuerJwksOrAudienceIsRefused(){var properties=verified();properties.setIssuer(null);var noIssuer=properties;assertThrows(IllegalArgumentException.class,()->filter(noIssuer,new MockEnvironment()));properties=verified();properties.setJwkSetUri(null);var noJwks=properties;assertThrows(IllegalArgumentException.class,()->filter(noJwks,new MockEnvironment()));var noAudience=verified();noAudience.setAudiences(List.of());assertThrows(IllegalArgumentException.class,()->filter(noAudience,new MockEnvironment()));}
-    @Test void publicMatcherForThisRouteIsRefused(){for(String matcher:List.of("/**","/api/v1/tenant-resource-bindings/**",TenantResourceBindingCurrentBudgetFilter.PATH)){var properties=verified();properties.setPermitMatchers(List.of(matcher));assertThrows(IllegalArgumentException.class,()->filter(properties,new MockEnvironment()));}}
+    @Test void publicMatcherForThisRouteIsRefused(){for(String matcher:List.of("/**","/api/v1/tenant-resource-bindings/**",TenantResourceBindingCurrentBudgetFilterImpl.PATH)){var properties=verified();properties.setPermitMatchers(List.of(matcher));assertThrows(IllegalArgumentException.class,()->filter(properties,new MockEnvironment()));}}
     @Test void unrelatedLegacyPublicMatcherIsPreserved(){var properties=verified();properties.setPermitMatchers(List.of("/actuator/health"));assertNotNull(filter(properties,new MockEnvironment()));assertEquals(List.of("/actuator/health"),properties.getPermitMatchers());}
     @Test void unrelatedDefaultTenantSettingCannotReplaceRequiredClaim(){var properties=verified();properties.setTenantRequired(false);assertThrows(IllegalArgumentException.class,()->filter(properties,new MockEnvironment().withProperty("firefly.security.default-tenant","fallback")));}
     static ResourceServerProperties verified(){var properties=new ResourceServerProperties();properties.setStrictPolicy(true);properties.setIssuer("https://issuer.example");properties.setJwkSetUri("https://issuer.example/jwks");properties.setAudiences(List.of("configuration"));properties.setTenantRequired(true);properties.setTenantClaimPaths(List.of("tenant_id"));return properties;}
-    private static TenantResourceBindingCurrentBudgetFilter filter(ResourceServerProperties properties,MockEnvironment environment){return new TenantResourceBindingConfiguration().tenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),properties,environment);}
+    private static TenantResourceBindingCurrentBudgetFilterImpl filter(ResourceServerProperties properties,MockEnvironment environment){return new TenantResourceBindingConfiguration().tenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),properties,environment);}
 }

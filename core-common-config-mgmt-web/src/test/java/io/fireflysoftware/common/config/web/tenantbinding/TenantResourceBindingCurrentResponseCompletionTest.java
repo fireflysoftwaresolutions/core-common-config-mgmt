@@ -1,7 +1,7 @@
 package io.fireflysoftware.common.config.web.tenantbinding;
 
 import io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController;
-import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter;
+import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl;
 import java.time.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -113,8 +113,8 @@ class TenantResourceBindingCurrentResponseCompletionTest {
     private static TenantResourceBindingCurrentController controller(){
         return new TenantResourceBindingCurrentController(budget->Mono.error(new AssertionError("No lookup is needed to emit a refusal")));
     }
-    private static TenantResourceBindingCurrentBudgetFilter filter(Time time){return new TenantResourceBindingCurrentBudgetFilter(time,time.nanos::get);}
-    private static MockServerWebExchange exchange(){return MockServerWebExchange.from(MockServerHttpRequest.get(TenantResourceBindingCurrentBudgetFilter.PATH));}
+    private static TenantResourceBindingCurrentBudgetFilterImpl filter(Time time){return new TenantResourceBindingCurrentBudgetFilterImpl(time,time.nanos::get);}
+    private static MockServerWebExchange exchange(){return MockServerWebExchange.from(MockServerHttpRequest.get(TenantResourceBindingCurrentBudgetFilterImpl.PATH));}
     private static void exactFailure(MockServerWebExchange exchange){
         assertTrue(exchange.getResponse().isCommitted());assertEquals(HttpStatus.SERVICE_UNAVAILABLE,exchange.getResponse().getStatusCode());
         assertEquals(CODE,exchange.getResponse().getBodyAsString().block());

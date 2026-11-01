@@ -3,7 +3,7 @@ package io.fireflysoftware.common.config.web.tenantbinding;
 import io.fireflysoftware.common.config.core.authority.TenantResourceBindingLookupAuthorization;
 import io.fireflysoftware.common.config.interfaces.authority.TenantResourceBindingContracts.*;
 import io.fireflysoftware.common.config.web.controllers.authority.TenantResourceBindingCurrentController;
-import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilter;
+import io.fireflysoftware.common.config.web.tenantbinding.impl.TenantResourceBindingCurrentBudgetFilterImpl;
 import java.time.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TenantResourceBindingCurrentHttpTest {
-    private static final String PATH=TenantResourceBindingCurrentBudgetFilter.PATH;
+    private static final String PATH=TenantResourceBindingCurrentBudgetFilterImpl.PATH;
     @Test void typedNoStoreObservationUsesSignedOpaqueNamespace(){
         var calls=new AtomicInteger();var actual=new AtomicInteger();var clock=Clock.systemUTC();
         var lookup=new TenantResourceBindingLookupAuthorization(new ReactorSecurityContextAdapter(),(p,a,r,c)->Mono.just(Decision.permit()),clock,Set.of("https://issuer.example"));
@@ -62,7 +62,7 @@ class TenantResourceBindingCurrentHttpTest {
     @Test void controllerWithoutOriginalFilterRefuses(){var ingress=TenantResourceBindingCurrentIngressTest.ingress(b->Mono.just(TenantResourceBindingCurrentIngressTest.current(Clock.systemUTC())));WebTestClient.bindToController(new TenantResourceBindingCurrentController(ingress)).build().get().uri(PATH).exchange().expectStatus().isEqualTo(503);}
     @Test void bodyWithoutContentLengthOrTransferEncodingIsRejected(){
         var calls=new AtomicInteger();var request=org.springframework.mock.http.server.reactive.MockServerHttpRequest.method(org.springframework.http.HttpMethod.GET,PATH).body(reactor.core.publisher.Flux.just(new org.springframework.core.io.buffer.DefaultDataBufferFactory().wrap("unexpected".getBytes(java.nio.charset.StandardCharsets.UTF_8))));
-        var exchange=org.springframework.mock.web.server.MockServerWebExchange.from(request);new TenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),System::nanoTime).filter(exchange,e->Mono.empty());
+        var exchange=org.springframework.mock.web.server.MockServerWebExchange.from(request);new TenantResourceBindingCurrentBudgetFilterImpl(Clock.systemUTC(),System::nanoTime).filter(exchange,e->Mono.empty());
         var controller=new TenantResourceBindingCurrentController(TenantResourceBindingCurrentIngressTest.ingress(read(calls)));
         var error=assertThrows(ResponseStatusException.class,()->controller.current(exchange).block());assertEquals(400,error.getStatusCode().value());assertEquals(0,calls.get());
     }
@@ -73,6 +73,6 @@ class TenantResourceBindingCurrentHttpTest {
         ReactiveJwtDecoder decoder=token->{var builder=Jwt.withTokenValue(token).header("alg","RS256").issuer("https://issuer.example").subject("opaque-subject").issuedAt(Instant.now().minusSeconds(1)).expiresAt(Instant.now().plusSeconds(60));if(tenant!=null)builder.claim("tenant_id",tenant);return Mono.just(builder.build());};
         var chain=auto.fireflySecurityWebFilterChain(ServerHttpSecurity.http(),decoder,converter,policy,properties);
         return WebTestClient.bindToController(new TenantResourceBindingCurrentController(TenantResourceBindingCurrentIngressTest.ingress(read)))
-            .webFilter(new TenantResourceBindingCurrentBudgetFilter(Clock.systemUTC(),System::nanoTime),new WebFilterChainProxy(chain)).webFilter(additional).configureClient().responseTimeout(Duration.ofSeconds(7)).build();
+            .webFilter(new TenantResourceBindingCurrentBudgetFilterImpl(Clock.systemUTC(),System::nanoTime),new WebFilterChainProxy(chain)).webFilter(additional).configureClient().responseTimeout(Duration.ofSeconds(7)).build();
     }
 }
