@@ -9245,6 +9245,7 @@ components:
           type: string
           enum:
           - DEPOSIT_ACCOUNT_ENROLLMENT
+          - INSURANCE_TERM_PC_QUOTE
         documentType:
           type: string
         locale:

@@ -134,7 +134,7 @@ public final class DocumentIssuerCodec {
         if(source.primaryColor()==null||!source.primaryColor().matches("#[0-9A-Fa-f]{6}"))throw bad();
     }
     static String useKey(Use use){
-        if(use==null||use.purpose()!=Purpose.DEPOSIT_ACCOUNT_ENROLLMENT||use.documentType()==null||!use.documentType().matches("[A-Z][A-Z0-9_]{0,63}"))throw bad();
+        if(use==null||use.purpose()==null||use.documentType()==null||!use.documentType().matches("[A-Z][A-Z0-9_]{0,63}"))throw bad();
         text(use.locale(),2,64);var locale=Locale.forLanguageTag(use.locale());
         if(locale.getLanguage().isEmpty()||"und".equals(locale.toLanguageTag())||!locale.toLanguageTag().equals(use.locale()))throw bad();
         return use.purpose().name()+"/"+use.documentType()+"/"+use.locale();

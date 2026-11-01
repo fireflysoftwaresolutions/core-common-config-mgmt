@@ -54,4 +54,21 @@ class DocumentIssuerCodecTest {
     @Test void malformedCurrentScopeCannotCreateAReferenceDigest(){assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.referenceDigest(new Reference(TENANT,ISSUER,PUBLICATION,0,"0".repeat(64),definition().uses().getFirst())));assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.referenceDigest(new Reference(TENANT,ISSUER,PUBLICATION,1,"0".repeat(64),null)));}
     @Test void publicCurrentRequestNeedsNoInferredStableIssuerIdentity(){var p=new PublicationReference(TENANT,PUBLICATION,1,DocumentIssuerCodec.definitionDigest(definition()),definition().uses().getFirst());assertFalse(DocumentIssuerCodec.publicationReferenceJson(p).contains("issuerId"));assertEquals(64,DocumentIssuerCodec.publicationReferenceDigest(p).length());assertNotEquals(DocumentIssuerCodec.publicationReferenceDigest(p),DocumentIssuerCodec.referenceDigest(new Reference(TENANT,ISSUER,PUBLICATION,1,p.definitionDigest(),p.use())));}
     @Test void publicCurrentRequestStillRejectsMissingUseOrRevision(){assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.publicationReferenceDigest(new PublicationReference(TENANT,PUBLICATION,0,"0".repeat(64),definition().uses().getFirst())));assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.publicationReferenceJson(new PublicationReference(TENANT,PUBLICATION,1,"0".repeat(64),null)));}
+    @Test void insuranceQuoteUseIsExplicitAndCannotReuseDepositReferenceDigest(){
+        var deposit=new Use(Purpose.DEPOSIT_ACCOUNT_ENROLLMENT,"CONTRACT","en-US");
+        var insurance=new Use(Purpose.INSURANCE_TERM_PC_QUOTE,"CONTRACT","en-US");
+        assertEquals("DEPOSIT_ACCOUNT_ENROLLMENT/CONTRACT/en-US",DocumentIssuerCodec.useKey(deposit));
+        assertEquals("INSURANCE_TERM_PC_QUOTE/CONTRACT/en-US",DocumentIssuerCodec.useKey(insurance));
+        var d=definition();var quote=new Definition(d.issuerId(),d.revision(),d.issuerCode(),d.displayName(),d.contactEmail(),List.of(insurance),d.source(),d.effectiveFromEpochMillis(),d.effectiveUntilEpochMillis());
+        assertDoesNotThrow(()->DocumentIssuerCodec.validate(quote));
+        assertNotEquals(DocumentIssuerCodec.definitionDigest(d),DocumentIssuerCodec.definitionDigest(quote));
+        var digest=DocumentIssuerCodec.definitionDigest(quote);
+        assertNotEquals(DocumentIssuerCodec.publicationReferenceDigest(new PublicationReference(TENANT,PUBLICATION,1,digest,deposit)),DocumentIssuerCodec.publicationReferenceDigest(new PublicationReference(TENANT,PUBLICATION,1,digest,insurance)));
+        assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.useKey(new Use(null,"CONTRACT","en-US")));
+    }
+
+    @Test void originalDepositCanonicalDefinitionAndPrepareDigestsRemainStable(){assertEquals("486f73e63b4e557a38eefc86c411f919fd2536cf79248a4d158a90d15c24edc2",DocumentIssuerCodec.definitionDigest(definition()));assertEquals("e666abcbbde35aad1daa54a80553a845eec0526d1d34f9ba09c395c0e8947dcf",DocumentIssuerCodec.prepare(TENANT,bytes(prepareJson())).intentDigest());}
+
+    @Test void unsupportedQuoteAndIssuanceUsesCannotEnterPrepare(){for(var purpose:List.of("INSURANCE_POLICY_ISSUANCE","INSURANCE_CONTRACT_SIGNATURE","TERM_PC_INSURANCE_QUOTE"))assertThrows(IllegalArgumentException.class,()->DocumentIssuerCodec.prepare(TENANT,bytes(prepareJson().replace("DEPOSIT_ACCOUNT_ENROLLMENT",purpose))));}
+
 }

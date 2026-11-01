@@ -135,7 +135,7 @@ public final class DocumentIssuerAuthorization {
         String resource="tenant/"+scope.tenantId()+"/document-issuer"+(scope.issuerId()==null?"":"/"+scope.issuerId())+"/publication/"+scope.publicationId()+"/action/"+scope.actionId();
         var context=new HashMap<String,Object>(Map.of("tenantId",scope.tenantId(),"publicationId",scope.publicationId(),
             "actionId",scope.actionId(),"operation",(recovery?Operation.RECOVER:scope.operation()).name(),"intentDigest",scope.intentDigest(),"phase",phase,
-            "purpose",Purpose.DEPOSIT_ACCOUNT_ENROLLMENT.name()));
+            "purpose",scope.documentUse()==null?"DOCUMENT_ISSUER_ADMINISTRATION":scope.documentUse().purpose().name()));
         if(recovery)context.put("recoveredOperation",scope.operation().name());
         if(scope.issuerId()!=null)context.put("issuerId",scope.issuerId());
         if(scope.brandingId()!=null)context.put("brandingId",scope.brandingId());
