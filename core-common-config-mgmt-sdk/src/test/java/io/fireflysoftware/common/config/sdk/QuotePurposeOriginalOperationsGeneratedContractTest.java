@@ -15,7 +15,10 @@ class QuotePurposeOriginalOperationsGeneratedContractTest {
     @Test void everyOriginalOperationSurvivesActualProducerAndSdkGeneration()throws Exception{
         byte[] actual;try(var resource=getClass().getResourceAsStream("/openapi.yml")){assertNotNull(resource);actual=resource.readAllBytes();}
         var input=System.getProperty("firefly.qualification.config-original-preimage");byte[] before=input==null?actual:Files.readAllBytes(Path.of(input));
-        var yaml=new ObjectMapper(new YAMLFactory());var original=operations(yaml.readTree(before));var observed=operations(yaml.readTree(actual));assertEquals(original,observed);
+        var yaml=new ObjectMapper(new YAMLFactory());var original=operations(yaml.readTree(before));var observed=operations(yaml.readTree(actual));
+        if(Boolean.getBoolean("owned.config.binding-governance-sdk-boundary.enabled")){
+            var expected=new TreeSet<>(original);expected.addAll(Set.of("/api/v1/tenant-resource-bindings/governance/intents\npost\nprepareTenantResourceBindingIntent","/api/v1/tenant-resource-bindings/governance/actions\npost\nexecuteTenantResourceBindingAction","/api/v1/tenant-resource-bindings/governance/actions/observations\npost\nobserveTenantResourceBindingAction"));assertEquals(138,expected.size());assertEquals(expected,observed);
+        }else assertEquals(original,observed);
         var json=new ObjectMapper();var receipt=Map.of("preimageSha256",digest(before),"actualProducerSha256",digest(actual),"originalOperationCount",original.size(),"actualOperationCount",observed.size(),"operations",observed);
         Files.writeString(Path.of("target/quote-purpose-original-operations.json"),json.writeValueAsString(receipt));
     }

@@ -12,16 +12,20 @@ public final class TenantResourceBindingContracts {
     public enum Operation { TENANT_RESOURCE_BINDING_ESTABLISH, TENANT_RESOURCE_BINDING_REVOKE }
     public enum State { ACTIVE, REVOKED }
     public enum DecisionOperation { SUBMIT, APPROVE, REJECT, WITHDRAW }
+    @Schema(name="TenantResourceBindingPreparation")
     public record Preparation(UUID actionId,Command target,long notAfterEpochMillis) {
         public Preparation {id(actionId);Objects.requireNonNull(target);positive(notAfterEpochMillis);if(notAfterEpochMillis>253402300799999L||actionId.equals(target.actionId()))throw invalid();}
     }
+    @Schema(name="TenantResourceBindingDecisionCommand")
     public record DecisionCommand(UUID actionId,ResourceTenant resourceTenant,UUID proposalId,DecisionOperation operation,
             long expectedControlVersion,String targetDigest,long notAfterEpochMillis) {
         public DecisionCommand {id(actionId);Objects.requireNonNull(resourceTenant);id(proposalId);Objects.requireNonNull(operation);if(expectedControlVersion<0||expectedControlVersion>=Long.MAX_VALUE-1)throw invalid();digest(targetDigest);positive(notAfterEpochMillis);if(notAfterEpochMillis>253402300799999L)throw invalid();}
     }
+    @Schema(name="TenantResourceBindingProposal")
     public record Proposal(UUID proposalId,String targetDigest,String state,long controlVersion,long notAfterEpochMillis) {
         public Proposal {id(proposalId);digest(targetDigest);if(!java.util.Set.of("DRAFT","SUBMITTED","APPROVED","REJECTED","WITHDRAWN","EXECUTION_ADMITTED").contains(state)||controlVersion<0||controlVersion==Long.MAX_VALUE)throw invalid();positive(notAfterEpochMillis);}
     }
+    @Schema(name="TenantResourceBindingGovernanceReceipt")
     public record GovernanceReceipt(UUID actionId,String intentDigest,Proposal proposal,long nativeUntilEpochMillis,UUID receiptId,UUID auditId,UUID eventId) {
         public GovernanceReceipt {id(actionId);digest(intentDigest);Objects.requireNonNull(proposal);positive(nativeUntilEpochMillis);id(receiptId);id(auditId);id(eventId);}
     }
@@ -52,10 +56,12 @@ public final class TenantResourceBindingContracts {
     public record Reference(UUID bindingId,long version,String definitionDigest) {
         public Reference {id(bindingId);positive(version);digest(definitionDigest);}
     }
+    @Schema(name="TenantResourceBindingCommand")
     public record Command(UUID actionId,UUID proposalId,Operation operation,Definition definition,
             Eligibility expectedCurrentEligibility,long expectedControlVersion) {
         public Command {id(actionId);id(proposalId);Objects.requireNonNull(operation);Objects.requireNonNull(definition);Objects.requireNonNull(expectedCurrentEligibility);if(expectedControlVersion<0||expectedControlVersion>=Long.MAX_VALUE-1)throw invalid();}
     }
+    @Schema(name="TenantResourceBindingCompletion")
     public record Completion(UUID actionId,String intentDigest,Reference reference,long controlVersion,State state,
             UUID receiptId,UUID auditId,UUID eventId) {
         public Completion {id(actionId);digest(intentDigest);Objects.requireNonNull(reference);positive(controlVersion);Objects.requireNonNull(state);id(receiptId);id(auditId);id(eventId);}

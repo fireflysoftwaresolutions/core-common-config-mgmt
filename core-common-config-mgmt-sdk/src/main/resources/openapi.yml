@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: http://localhost:18080
+- url: ""
   description: Generated server url
 tags:
 - name: Channel Config Parameters
@@ -3465,6 +3465,78 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/PaginationResponseTenantSettingsDTO"
+  /api/v1/tenant-resource-bindings/governance/intents:
+    post:
+      tags:
+      - TenantResourceBindingGovernance
+      description: Read-only owner action/digest preparation. Grants no authority
+        and creates no native proposal or reservation.
+      operationId: prepareTenantResourceBindingIntent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantResourceBindingGovernedIntent"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingPreparedIntent"
+      security:
+      - tenantResourceBindingBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenant-resource-bindings/governance/actions/observations:
+    post:
+      tags:
+      - TenantResourceBindingGovernance
+      description: Read-only recovery of the exact original action under current platform
+        action-read authority and retained caller identity. Historical receipt or
+        absence at this read grants no current binding or replacement mutation.
+      operationId: observeTenantResourceBindingAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantResourceBindingGovernedActionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingActionRecovery"
+      security:
+      - tenantResourceBindingBearer: []
+      x-disable-idempotency: true
+  /api/v1/tenant-resource-bindings/governance/actions:
+    post:
+      tags:
+      - TenantResourceBindingGovernance
+      description: "Executes exactly the retained owner intent once. PREPARATION creates\
+        \ the real native draft; DECISION submits or independently checks it; CONTROL\
+        \ establishes or revokes. OUTCOME_UNKNOWN requires original-action observation,\
+        \ never automatic replacement."
+      operationId: executeTenantResourceBindingAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TenantResourceBindingGovernedActionRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResourceBindingGovernedActionResult"
+      security:
+      - tenantResourceBindingBearer: []
+      x-disable-idempotency: true
   /api/v1/tenant-brandings:
     post:
       tags:
@@ -9509,6 +9581,253 @@ components:
           format: int32
       description: Represents a paginated response containing a list of items and
         pagination metadata.
+    TenantResourceBindingCommand:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        proposalId:
+          type: string
+          format: uuid
+        operation:
+          type: string
+          enum:
+          - TENANT_RESOURCE_BINDING_ESTABLISH
+          - TENANT_RESOURCE_BINDING_REVOKE
+        definition:
+          $ref: "#/components/schemas/TenantResourceBindingDefinition"
+        expectedCurrentEligibility:
+          $ref: "#/components/schemas/TenantResourceBindingEligibility"
+        expectedControlVersion:
+          type: integer
+          format: int64
+    TenantResourceBindingDecisionCommand:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        resourceTenant:
+          $ref: "#/components/schemas/TenantResourceBindingResourceTenant"
+        proposalId:
+          type: string
+          format: uuid
+        operation:
+          type: string
+          enum:
+          - SUBMIT
+          - APPROVE
+          - REJECT
+          - WITHDRAW
+        expectedControlVersion:
+          type: integer
+          format: int64
+        targetDigest:
+          type: string
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingDefinition:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        namespace:
+          $ref: "#/components/schemas/TenantResourceBindingNamespace"
+        resourceTenant:
+          $ref: "#/components/schemas/TenantResourceBindingResourceTenant"
+        version:
+          type: integer
+          format: int64
+        eligibility:
+          $ref: "#/components/schemas/TenantResourceBindingEligibility"
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingEligibility:
+      type: object
+      properties:
+        tenantGeneration:
+          type: integer
+          format: int64
+        statusId:
+          type: string
+          format: uuid
+        statusGeneration:
+          type: integer
+          format: int64
+    TenantResourceBindingGovernedIntent:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - PREPARATION
+          - DECISION
+          - CONTROL
+        preparation:
+          $ref: "#/components/schemas/TenantResourceBindingPreparation"
+        decision:
+          $ref: "#/components/schemas/TenantResourceBindingDecisionCommand"
+        control:
+          $ref: "#/components/schemas/TenantResourceBindingCommand"
+      additionalProperties: false
+    TenantResourceBindingNamespace:
+      type: object
+      properties:
+        issuer:
+          type: string
+        platformTenant:
+          type: string
+    TenantResourceBindingPreparation:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        target:
+          $ref: "#/components/schemas/TenantResourceBindingCommand"
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingResourceTenant:
+      type: object
+      properties:
+        value:
+          type: string
+          format: uuid
+    TenantResourceBindingPreparedIntent:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        intentDigest:
+          type: string
+      description: "Read-only owner digest; no reservation, grant, native preparation\
+        \ or guarantee of later admission."
+    TenantResourceBindingGovernedActionRequest:
+      type: object
+      properties:
+        intent:
+          $ref: "#/components/schemas/TenantResourceBindingGovernedIntent"
+        originalIntentDigest:
+          type: string
+      additionalProperties: false
+    TenantResourceBindingActionRecovery:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - FOUND
+          - NOT_OBSERVED_AT_THIS_READ
+          - INTENT_CONFLICT
+        actionId:
+          type: string
+          format: uuid
+        intentDigest:
+          type: string
+        snapshot:
+          $ref: "#/components/schemas/NativeAuthorityActionSnapshot"
+      description: Historical original-action observation only; absence at this read
+        does not permit another mutation or establish a current binding.
+    TenantResourceBindingCompletion:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        intentDigest:
+          type: string
+        reference:
+          $ref: "#/components/schemas/TenantResourceBindingReference"
+        controlVersion:
+          type: integer
+          format: int64
+        state:
+          type: string
+          enum:
+          - ACTIVE
+          - REVOKED
+        receiptId:
+          type: string
+          format: uuid
+        auditId:
+          type: string
+          format: uuid
+        eventId:
+          type: string
+          format: uuid
+    TenantResourceBindingGovernanceReceipt:
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        intentDigest:
+          type: string
+        proposal:
+          $ref: "#/components/schemas/TenantResourceBindingProposal"
+        nativeUntilEpochMillis:
+          type: integer
+          format: int64
+        receiptId:
+          type: string
+          format: uuid
+        auditId:
+          type: string
+          format: uuid
+        eventId:
+          type: string
+          format: uuid
+    TenantResourceBindingGovernedActionResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - COMMITTED
+          - COMMITTED_RESPONSE_UNAVAILABLE
+          - OUTCOME_UNKNOWN
+        actionId:
+          type: string
+          format: uuid
+        intentDigest:
+          type: string
+        governanceReceipt:
+          $ref: "#/components/schemas/TenantResourceBindingGovernanceReceipt"
+        completion:
+          $ref: "#/components/schemas/TenantResourceBindingCompletion"
+    TenantResourceBindingProposal:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          format: uuid
+        targetDigest:
+          type: string
+        state:
+          type: string
+        controlVersion:
+          type: integer
+          format: int64
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+    TenantResourceBindingReference:
+      type: object
+      properties:
+        bindingId:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          format: int64
+        definitionDigest:
+          type: string
     PaginationResponseTenantBrandingDTO:
       type: object
       properties:
@@ -10214,60 +10533,6 @@ components:
         validUntilEpochMillis:
           type: integer
           format: int64
-    TenantResourceBindingDefinition:
-      type: object
-      properties:
-        bindingId:
-          type: string
-          format: uuid
-        namespace:
-          $ref: "#/components/schemas/TenantResourceBindingNamespace"
-        resourceTenant:
-          $ref: "#/components/schemas/TenantResourceBindingResourceTenant"
-        version:
-          type: integer
-          format: int64
-        eligibility:
-          $ref: "#/components/schemas/TenantResourceBindingEligibility"
-        notAfterEpochMillis:
-          type: integer
-          format: int64
-    TenantResourceBindingEligibility:
-      type: object
-      properties:
-        tenantGeneration:
-          type: integer
-          format: int64
-        statusId:
-          type: string
-          format: uuid
-        statusGeneration:
-          type: integer
-          format: int64
-    TenantResourceBindingNamespace:
-      type: object
-      properties:
-        issuer:
-          type: string
-        platformTenant:
-          type: string
-    TenantResourceBindingReference:
-      type: object
-      properties:
-        bindingId:
-          type: string
-          format: uuid
-        version:
-          type: integer
-          format: int64
-        definitionDigest:
-          type: string
-    TenantResourceBindingResourceTenant:
-      type: object
-      properties:
-        value:
-          type: string
-          format: uuid
   securitySchemes:
     tenantResourceBindingBearer:
       type: http
