@@ -33,6 +33,16 @@ class DocumentIssuerQuotePurposeNativeTest {
     private static String scalar(String sql)throws Exception{try(var c=admin();var s=c.createStatement();var rows=s.executeQuery(sql)){assertTrue(rows.next());return rows.getString(1);}}
     private static String use(String purpose)throws Exception{try(var c=admin();var s=c.createStatement()){s.execute("SET ROLE cfg_document_issuer_guard");try(var q=c.prepareStatement("SELECT public.cfg_document_issuer_use(?::json)")){q.setString(1,"{\"purpose\":\""+purpose+"\",\"documentType\":\"CONTRACT\",\"locale\":\"en-US\"}");try(var rows=q.executeQuery()){assertTrue(rows.next());return rows.getString(1);}}}}
     @Test void bothExactNativePurposesKeepDistinctCanonicalFrames()throws Exception{assertEquals("R3:S26:DEPOSIT_ACCOUNT_ENROLLMENTS8:CONTRACTS5:en-US",use("DEPOSIT_ACCOUNT_ENROLLMENT"));assertEquals("R3:S23:INSURANCE_TERM_PC_QUOTES8:CONTRACTS5:en-US",use("INSURANCE_TERM_PC_QUOTE"));}
+    @Test void cardEnrollmentKeepsItsDistinctNativeCanonicalUse()throws Exception{
+        assertEquals("R3:S15:CARD_ENROLLMENTS8:CONTRACTS5:en-US",use("CARD_ENROLLMENT"));
+        assertNotEquals(use("DEPOSIT_ACCOUNT_ENROLLMENT"),use("CARD_ENROLLMENT"));
+        assertNotEquals(use("INSURANCE_TERM_PC_QUOTE"),use("CARD_ENROLLMENT"));
+    }
+    @Test void cardEnrollmentDoesNotAuthorizeActivationShippingOrSignature()throws Exception{
+        for(var purpose:List.of("CARD_ACTIVATION","CARD_SHIPPING","CARD_CONTRACT_SIGNATURE")){
+            var error=assertThrows(SQLException.class,()->use(purpose));assertEquals("22023",error.getSQLState());
+        }
+    }
     @Test void unknownPurposesCannotAuthorizePolicyIssuanceOrSignature()throws Exception{for(var purpose:List.of("INSURANCE_POLICY_ISSUANCE","INSURANCE_CONTRACT_SIGNATURE","TERM_PC_INSURANCE_QUOTE","")){var error=assertThrows(SQLException.class,()->use(purpose));assertEquals("22023",error.getSQLState());}}
     @Test void forwardMigrationPreservesExistingFunctionOwnerOidAndAcl()throws Exception{assertEquals(originalOid,scalar("SELECT 'public.cfg_document_issuer_use(json)'::regprocedure::oid::text"));assertEquals(originalAcl,scalar("SELECT proacl::text FROM pg_proc WHERE oid='public.cfg_document_issuer_use(json)'::regprocedure"));assertEquals("cfg_document_issuer_guard",scalar("SELECT pg_get_userbyid(proowner) FROM pg_proc WHERE oid='public.cfg_document_issuer_use(json)'::regprocedure"));assertEquals("false",scalar("SELECT has_schema_privilege('cfg_document_issuer_guard','public','CREATE')::text"));}
     @Test void runtimeGroupsDoNotAcquirePureCodecOrInstallerAuthority()throws Exception{for(var role:List.of("cfg_document_issuer_commands","cfg_document_issuer_read")){assertEquals("false",scalar("SELECT has_function_privilege('"+role+"','public.cfg_document_issuer_use(json)','EXECUTE')::text"));assertEquals("false",scalar("SELECT pg_has_role('"+role+"','cfg_document_issuer_guard','MEMBER')::text"));assertEquals("false",scalar("SELECT has_schema_privilege('"+role+"','cfg_document_issuer_migrations','USAGE,CREATE')::text"));}}

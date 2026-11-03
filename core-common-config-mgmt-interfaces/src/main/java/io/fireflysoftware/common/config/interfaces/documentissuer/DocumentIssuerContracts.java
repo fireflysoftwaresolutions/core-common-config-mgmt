@@ -13,7 +13,7 @@ public final class DocumentIssuerContracts {
     private DocumentIssuerContracts() {}
 
     @Schema(name="DocumentIssuerPurpose")
-    public enum Purpose { DEPOSIT_ACCOUNT_ENROLLMENT, INSURANCE_TERM_PC_QUOTE }
+    public enum Purpose { DEPOSIT_ACCOUNT_ENROLLMENT, INSURANCE_TERM_PC_QUOTE, CARD_ENROLLMENT }
     @Schema(name="DocumentIssuerOperation")
     public enum Operation { PREPARE, PUBLISH, REVOKE, CURRENT, SOURCE, HISTORY, RECOVER }
     @Schema(name="DocumentIssuerState")
