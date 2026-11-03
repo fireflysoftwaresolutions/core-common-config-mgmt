@@ -83,6 +83,7 @@ public class TenantServiceImpl implements TenantService {
 
                     // Preserve created date
                     updatedEntity.setCreatedAt(existingEntity.getCreatedAt());
+                    updatedEntity.setVersion(existingEntity.getVersion());
 
                     // Save updated entity
                     return repository.save(updatedEntity);

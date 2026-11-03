@@ -27,6 +27,7 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import io.r2dbc.postgresql.codec.Json;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -136,7 +137,7 @@ public class ApiProcessMapping {
      * Additional configuration parameters (JSON).
      */
     @Column("parameters")
-    private String parameters;
+    private Json parameters;
 
     /**
      * Description for documentation.

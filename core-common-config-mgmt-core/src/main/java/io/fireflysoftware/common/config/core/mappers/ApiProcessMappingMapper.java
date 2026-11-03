@@ -18,6 +18,8 @@ package io.fireflysoftware.common.config.core.mappers;
 
 import io.fireflysoftware.common.config.interfaces.dtos.ApiProcessMappingDTO;
 import io.fireflysoftware.common.config.models.entities.ApiProcessMapping;
+import io.r2dbc.postgresql.codec.Json;
+import org.mapstruct.Named;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -37,6 +39,7 @@ public interface ApiProcessMappingMapper {
      * @param entity the entity to convert
      * @return the DTO
      */
+    @Mapping(target = "parameters", qualifiedByName = "jsonParametersToString")
     ApiProcessMappingDTO toDTO(ApiProcessMapping entity);
 
     /**
@@ -48,6 +51,7 @@ public interface ApiProcessMappingMapper {
      */
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "parameters", qualifiedByName = "stringToJsonParameters")
     ApiProcessMapping toEntity(ApiProcessMappingDTO dto);
 
     /**
@@ -61,5 +65,16 @@ public interface ApiProcessMappingMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "parameters", qualifiedByName = "stringToJsonParameters")
     void updateEntityFromDTO(ApiProcessMappingDTO dto, @MappingTarget ApiProcessMapping entity);
+
+    @Named("stringToJsonParameters")
+    default Json stringToJsonParameters(String value) {
+        return value == null ? null : Json.of(value);
+    }
+
+    @Named("jsonParametersToString")
+    default String jsonParametersToString(Json value) {
+        return value == null ? null : value.asString();
+    }
 }

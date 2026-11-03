@@ -31,7 +31,7 @@ import java.lang.reflect.Field;
  * 3. Security warning: if isSecret=true but value field is also set, it's a potential security issue
  */
 @Slf4j
-public class SecretConfigurationValidator implements ConstraintValidator<ValidSecretConfiguration, Object> {
+public class SecretConfigurationValidatorImpl implements ConstraintValidator<ValidSecretConfiguration, Object> {
     
     private String secretFlagField;
     private String valueField;

@@ -35,6 +35,16 @@ The Firefly Configuration Management Service is the **central configuration hub*
 - **Custom Branding**: Visual customization per tenant
 - **Secure Credential Management**: Integration with `core-common-security-vault` for secure storage of API keys, passwords, and secrets
 
+For native institution grants, governed tenant/status eligibility, current observations, and deployment prerequisites, see [Institution authority](docs/institution-authority.md).
+
+For configuration-owned document issuer publication, finite current observations, original-action recovery, and optional deployment, see [Governed document issuers](docs/document-issuers.md).
+
+## Technical PostgreSQL cache
+
+The Web module includes the BOM-managed `fireflyframework-cache-postgres` adapter and selects PostgreSQL as its technical cache default. Configure a separate restricted cache database/login with `CACHE_DB_HOST`, `CACHE_DB_PORT`, `CACHE_DB_NAME`, `CACHE_DB_USERNAME`, and `CACHE_DB_PASSWORD`. `CACHE_DB_SSL_MODE` defaults to `verify-full`; `CACHE_DB_SCHEMA` defaults to `firefly_config_cache`. Automatic schema creation is disabled, so provision the cache before startup. Do not point it at the Config business connection or treat cache entries as current authority.
+
+The source configuration and all446 Config cases passed in hosted run41390338462 with the unchanged genuine full138-operation producer and SDK. This source checkpoint does not certify signed Config Main startup, native provider deployment, or end-to-end insurance execution; those remain separate integration gates.
+
 ## Quick Start
 
 ### Prerequisites
